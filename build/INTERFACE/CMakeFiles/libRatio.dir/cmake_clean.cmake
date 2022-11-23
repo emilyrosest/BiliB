@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "../bin/libRatio"
-  "../bin/libRatio.pdb"
   "CMakeFiles/libRatio.dir/src/Ratio.cpp.o"
+  "liblibRatio.a"
+  "liblibRatio.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

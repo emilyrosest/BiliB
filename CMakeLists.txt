@@ -27,13 +27,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # (optional) add a "output" directory in the project binary directory
 file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
 
-# (optaional) put the binary files in this directory
+# (optional) put the binary files in this directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 
-message(STATUS "libRatio cmake")
+message(STATUS "libRatio cmake part ...")
 add_subdirectory(libRatio INTERFACE)
 include_directories(${CMAKE_SOURCE_DIR}/libRatio/include)
 
-message(STATUS "myExemples cmake")
+message(STATUS "myExemples cmake part ...")
 add_subdirectory(myExemples)

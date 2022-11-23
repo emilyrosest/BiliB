@@ -59,6 +59,8 @@ class Ratio {
         /// \brief destructor
         ~Ratio() = default;
 
+        double getNum();
+
 };
 
 // #endif

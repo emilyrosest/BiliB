@@ -10,7 +10,7 @@ int main()
     bidule++;
 
     std::cout << "salut a tous!!! " << std::endl << bidule << std::endl;
-    std::cout << myRatio.m_n << std::endl;
+    std::cout << myRatio->getNum(); << std::endl;
 
     return 0;
 }
