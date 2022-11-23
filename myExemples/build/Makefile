@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/emily-rose/Documents/projet_maths_info/BiliB
+CMAKE_SOURCE_DIR = /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/emily-rose/Documents/projet_maths_info/BiliB/build
+CMAKE_BINARY_DIR = /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build/CMakeFiles /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named libRatio
-
-# Build rule for target.
-libRatio: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 libRatio
-.PHONY : libRatio
-
-# fast build rule for target.
-libRatio/fast:
-	$(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/build
-.PHONY : libRatio/fast
-
-#=============================================================================
 # Target rules for targets named myExemples
 
 # Build rule for target.
@@ -133,8 +120,35 @@ myExemples: cmake_check_build_system
 
 # fast build rule for target.
 myExemples/fast:
-	$(MAKE) -f myExemples/CMakeFiles/myExemples.dir/build.make myExemples/CMakeFiles/myExemples.dir/build
+	$(MAKE) -f CMakeFiles/myExemples.dir/build.make CMakeFiles/myExemples.dir/build
 .PHONY : myExemples/fast
+
+src/test.o: src/test.cpp.o
+
+.PHONY : src/test.o
+
+# target to build an object file
+src/test.cpp.o:
+	$(MAKE) -f CMakeFiles/myExemples.dir/build.make CMakeFiles/myExemples.dir/src/test.cpp.o
+.PHONY : src/test.cpp.o
+
+src/test.i: src/test.cpp.i
+
+.PHONY : src/test.i
+
+# target to preprocess a source file
+src/test.cpp.i:
+	$(MAKE) -f CMakeFiles/myExemples.dir/build.make CMakeFiles/myExemples.dir/src/test.cpp.i
+.PHONY : src/test.cpp.i
+
+src/test.s: src/test.cpp.s
+
+.PHONY : src/test.s
+
+# target to generate assembly for a file
+src/test.cpp.s:
+	$(MAKE) -f CMakeFiles/myExemples.dir/build.make CMakeFiles/myExemples.dir/src/test.cpp.s
+.PHONY : src/test.cpp.s
 
 # Help Target
 help:
@@ -144,8 +158,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... libRatio"
 	@echo "... myExemples"
+	@echo "... src/test.o"
+	@echo "... src/test.i"
+	@echo "... src/test.s"
 .PHONY : help
 
 

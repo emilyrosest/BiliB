@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles/progress.marks
-	$(MAKE) -f CMakeFiles/Makefile2 all
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles /home/emily-rose/Documents/projet_maths_info/BiliB/build/INTERFACE/CMakeFiles/progress.marks
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f CMakeFiles/Makefile2 INTERFACE/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) -f CMakeFiles/Makefile2 clean
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f CMakeFiles/Makefile2 INTERFACE/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,44 +97,60 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f CMakeFiles/Makefile2 INTERFACE/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) -f CMakeFiles/Makefile2 preinstall
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f CMakeFiles/Makefile2 INTERFACE/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named libRatio
+# Convenience name for target.
+INTERFACE/CMakeFiles/libRatio.dir/rule:
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f CMakeFiles/Makefile2 INTERFACE/CMakeFiles/libRatio.dir/rule
+.PHONY : INTERFACE/CMakeFiles/libRatio.dir/rule
 
-# Build rule for target.
-libRatio: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 libRatio
+# Convenience name for target.
+libRatio: INTERFACE/CMakeFiles/libRatio.dir/rule
+
 .PHONY : libRatio
 
 # fast build rule for target.
 libRatio/fast:
-	$(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/build
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/build
 .PHONY : libRatio/fast
 
-#=============================================================================
-# Target rules for targets named myExemples
+src/Ratio.o: src/Ratio.cpp.o
 
-# Build rule for target.
-myExemples: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 myExemples
-.PHONY : myExemples
+.PHONY : src/Ratio.o
 
-# fast build rule for target.
-myExemples/fast:
-	$(MAKE) -f myExemples/CMakeFiles/myExemples.dir/build.make myExemples/CMakeFiles/myExemples.dir/build
-.PHONY : myExemples/fast
+# target to build an object file
+src/Ratio.cpp.o:
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/src/Ratio.cpp.o
+.PHONY : src/Ratio.cpp.o
+
+src/Ratio.i: src/Ratio.cpp.i
+
+.PHONY : src/Ratio.i
+
+# target to preprocess a source file
+src/Ratio.cpp.i:
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/src/Ratio.cpp.i
+.PHONY : src/Ratio.cpp.i
+
+src/Ratio.s: src/Ratio.cpp.s
+
+.PHONY : src/Ratio.s
+
+# target to generate assembly for a file
+src/Ratio.cpp.s:
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/src/Ratio.cpp.s
+.PHONY : src/Ratio.cpp.s
 
 # Help Target
 help:
@@ -145,7 +161,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... libRatio"
-	@echo "... myExemples"
+	@echo "... src/Ratio.o"
+	@echo "... src/Ratio.i"
+	@echo "... src/Ratio.s"
 .PHONY : help
 
 
@@ -157,6 +175,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

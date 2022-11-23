@@ -53,19 +53,112 @@ CMAKE_BINARY_DIR = /home/emily-rose/Documents/projet_maths_info/BiliB/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: INTERFACE/all
+all: myExemples/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: INTERFACE/preinstall
+preinstall: myExemples/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean:
+clean: INTERFACE/clean
+clean: myExemples/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory INTERFACE
+
+# Recursive "all" directory target.
+INTERFACE/all: INTERFACE/CMakeFiles/libRatio.dir/all
+
+.PHONY : INTERFACE/all
+
+# Recursive "preinstall" directory target.
+INTERFACE/preinstall:
+
+.PHONY : INTERFACE/preinstall
+
+# Recursive "clean" directory target.
+INTERFACE/clean: INTERFACE/CMakeFiles/libRatio.dir/clean
+
+.PHONY : INTERFACE/clean
+
+#=============================================================================
+# Directory level rules for directory myExemples
+
+# Recursive "all" directory target.
+myExemples/all: myExemples/CMakeFiles/myExemples.dir/all
+
+.PHONY : myExemples/all
+
+# Recursive "preinstall" directory target.
+myExemples/preinstall:
+
+.PHONY : myExemples/preinstall
+
+# Recursive "clean" directory target.
+myExemples/clean: myExemples/CMakeFiles/myExemples.dir/clean
+
+.PHONY : myExemples/clean
+
+#=============================================================================
+# Target rules for target INTERFACE/CMakeFiles/libRatio.dir
+
+# All Build rule for target.
+INTERFACE/CMakeFiles/libRatio.dir/all:
+	$(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/depend
+	$(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles --progress-num=1,2 "Built target libRatio"
+.PHONY : INTERFACE/CMakeFiles/libRatio.dir/all
+
+# Build rule for subdir invocation for target.
+INTERFACE/CMakeFiles/libRatio.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 INTERFACE/CMakeFiles/libRatio.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 0
+.PHONY : INTERFACE/CMakeFiles/libRatio.dir/rule
+
+# Convenience name for target.
+libRatio: INTERFACE/CMakeFiles/libRatio.dir/rule
+
+.PHONY : libRatio
+
+# clean rule for target.
+INTERFACE/CMakeFiles/libRatio.dir/clean:
+	$(MAKE) -f INTERFACE/CMakeFiles/libRatio.dir/build.make INTERFACE/CMakeFiles/libRatio.dir/clean
+.PHONY : INTERFACE/CMakeFiles/libRatio.dir/clean
+
+#=============================================================================
+# Target rules for target myExemples/CMakeFiles/myExemples.dir
+
+# All Build rule for target.
+myExemples/CMakeFiles/myExemples.dir/all:
+	$(MAKE) -f myExemples/CMakeFiles/myExemples.dir/build.make myExemples/CMakeFiles/myExemples.dir/depend
+	$(MAKE) -f myExemples/CMakeFiles/myExemples.dir/build.make myExemples/CMakeFiles/myExemples.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles --progress-num=3,4 "Built target myExemples"
+.PHONY : myExemples/CMakeFiles/myExemples.dir/all
+
+# Build rule for subdir invocation for target.
+myExemples/CMakeFiles/myExemples.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 myExemples/CMakeFiles/myExemples.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 0
+.PHONY : myExemples/CMakeFiles/myExemples.dir/rule
+
+# Convenience name for target.
+myExemples: myExemples/CMakeFiles/myExemples.dir/rule
+
+.PHONY : myExemples
+
+# clean rule for target.
+myExemples/CMakeFiles/myExemples.dir/clean:
+	$(MAKE) -f myExemples/CMakeFiles/myExemples.dir/build.make myExemples/CMakeFiles/myExemples.dir/clean
+.PHONY : myExemples/CMakeFiles/myExemples.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

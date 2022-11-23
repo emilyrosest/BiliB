@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/build"
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -595,7 +595,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB"
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -839,7 +839,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "Project"
+			"value" : "myExemples"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1131,7 +1131,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/build"
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build"
 		},
 		{
 			"name" : "Project_SOURCE_DIR",
@@ -1143,7 +1143,79 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB"
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples"
+		},
+		{
+			"name" : "libRatio_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build"
+		},
+		{
+			"name" : "libRatio_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples"
+		},
+		{
+			"name" : "myE_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build"
+		},
+		{
+			"name" : "myE_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples"
+		},
+		{
+			"name" : "myExemples_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build"
+		},
+		{
+			"name" : "myExemples_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples"
 		}
 	],
 	"kind" : "cache",

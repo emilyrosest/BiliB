@@ -1,0 +1,3 @@
+/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build/CMakeFiles/rebuild_cache.dir
+/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build/CMakeFiles/edit_cache.dir
+/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build/CMakeFiles/myExemples.dir
