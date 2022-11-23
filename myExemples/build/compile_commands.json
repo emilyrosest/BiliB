@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/build",
-  "command": "/usr/bin/g++    -g   -Wall -O2 -o CMakeFiles/myExemples.dir/src/test.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/test.cpp",
-  "file": "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/test.cpp"
-}
-]

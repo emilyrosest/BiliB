@@ -4,5 +4,15 @@ project(libRatio)
 
 add_executable(libRatio src/Ratio.cpp include/Ratio.hpp)
 
+# Doxygen
+find_package(Doxygen OPTIONAL_COMPONENTS QUIET)
+if(DOXYGEN_FOUND)
+    add_subdirectory(doc)
+else()
+    message(WARNING "Doxygen not found, skip dococumentation")
+endif()
+
 target_compile_features(libRatio PRIVATE cxx_std_11) 
-target_compile_options(libRatio PRIVATE -Wall -O2)   
+target_compile_options(libRatio PRIVATE -Wall -O2)
+
+target_include_directories(libRatio PRIVATE "include")

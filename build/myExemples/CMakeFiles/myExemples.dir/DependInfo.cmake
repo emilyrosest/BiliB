@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/test.cpp" "/home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples/CMakeFiles/myExemples.dir/src/test.cpp.o"
+  "/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/myExemples/src/test.cpp" "/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/build/myExemples/CMakeFiles/myExemples.dir/src/test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../libRation/include"
+  "../libRatio/include"
   )
 
 # Targets to which this target links.

@@ -1,9 +1,5 @@
+#include "Ratio.hpp"
 #include <iostream>
 
-
-int main()
-{
-    std::cout << "ca marche!!!" << std::endl;
-
-    return 0;
+Ratio::Ratio() : m_n(0), m_d(1) {
 }

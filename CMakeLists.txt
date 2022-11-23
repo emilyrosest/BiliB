@@ -33,7 +33,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
 message(STATUS "libRatio cmake")
 add_subdirectory(libRatio INTERFACE)
-include_directories(${CMAKE_SOURCE_DIR}/libRation/include)
+include_directories(${CMAKE_SOURCE_DIR}/libRatio/include)
 
 message(STATUS "myExemples cmake")
 add_subdirectory(myExemples)

@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/build",
-  "command": "/usr/bin/g++    -g   -Wall -O2 -o CMakeFiles/libRatio.dir/src/Ratio.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/src/Ratio.cpp",
-  "file": "/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/src/Ratio.cpp"
-}
-]

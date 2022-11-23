@@ -1,1 +1,1 @@
-/usr/bin/g++  -g   CMakeFiles/libRatio.dir/src/Ratio.cpp.o  -o ../bin/libRatio 
+/usr/bin/g++ -g CMakeFiles/libRatio.dir/src/Ratio.cpp.o -o ../bin/libRatio 
