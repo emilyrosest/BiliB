@@ -1,1 +1,1 @@
-/usr/bin/g++  -g   CMakeFiles/myExemples.dir/src/test.cpp.o  -o ../bin/myExemples  ../INTERFACE/liblibRatio.a 
+/usr/bin/g++  -g   CMakeFiles/myExemples.dir/src/main.cpp.o  -o ../bin/myExemples  ../INTERFACE/liblibRatio.a 

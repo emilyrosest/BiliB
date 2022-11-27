@@ -41,6 +41,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/emily-rose/Documents/projet_maths_info/BiliB/build/INTERFACE/cmake_install.cmake")
   include("/home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples/cmake_install.cmake")
+  include("/home/emily-rose/Documents/projet_maths_info/BiliB/build/myTest/cmake_install.cmake")
 
 endif()
 

@@ -195,6 +195,19 @@ myExemples/fast:
 	$(MAKE) -f myExemples/CMakeFiles/myExemples.dir/build.make myExemples/CMakeFiles/myExemples.dir/build
 .PHONY : myExemples/fast
 
+#=============================================================================
+# Target rules for targets named myTest
+
+# Build rule for target.
+myTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 myTest
+.PHONY : myTest
+
+# fast build rule for target.
+myTest/fast:
+	$(MAKE) -f myTest/CMakeFiles/myTest.dir/build.make myTest/CMakeFiles/myTest.dir/build
+.PHONY : myTest/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -210,6 +223,7 @@ help:
 	@echo "... libRatio"
 	@echo "... html"
 	@echo "... myExemples"
+	@echo "... myTest"
 .PHONY : help
 
 

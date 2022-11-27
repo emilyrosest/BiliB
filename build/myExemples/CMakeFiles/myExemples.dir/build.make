@@ -57,27 +57,27 @@ include myExemples/CMakeFiles/myExemples.dir/progress.make
 # Include the compile flags for this target's objects.
 include myExemples/CMakeFiles/myExemples.dir/flags.make
 
-myExemples/CMakeFiles/myExemples.dir/src/test.cpp.o: myExemples/CMakeFiles/myExemples.dir/flags.make
-myExemples/CMakeFiles/myExemples.dir/src/test.cpp.o: ../myExemples/src/test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object myExemples/CMakeFiles/myExemples.dir/src/test.cpp.o"
-	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myExemples.dir/src/test.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/test.cpp
+myExemples/CMakeFiles/myExemples.dir/src/main.cpp.o: myExemples/CMakeFiles/myExemples.dir/flags.make
+myExemples/CMakeFiles/myExemples.dir/src/main.cpp.o: ../myExemples/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object myExemples/CMakeFiles/myExemples.dir/src/main.cpp.o"
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myExemples.dir/src/main.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/main.cpp
 
-myExemples/CMakeFiles/myExemples.dir/src/test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myExemples.dir/src/test.cpp.i"
-	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/test.cpp > CMakeFiles/myExemples.dir/src/test.cpp.i
+myExemples/CMakeFiles/myExemples.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myExemples.dir/src/main.cpp.i"
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/main.cpp > CMakeFiles/myExemples.dir/src/main.cpp.i
 
-myExemples/CMakeFiles/myExemples.dir/src/test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myExemples.dir/src/test.cpp.s"
-	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/test.cpp -o CMakeFiles/myExemples.dir/src/test.cpp.s
+myExemples/CMakeFiles/myExemples.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myExemples.dir/src/main.cpp.s"
+	cd /home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/main.cpp -o CMakeFiles/myExemples.dir/src/main.cpp.s
 
 # Object files for target myExemples
 myExemples_OBJECTS = \
-"CMakeFiles/myExemples.dir/src/test.cpp.o"
+"CMakeFiles/myExemples.dir/src/main.cpp.o"
 
 # External object files for target myExemples
 myExemples_EXTERNAL_OBJECTS =
 
-bin/myExemples: myExemples/CMakeFiles/myExemples.dir/src/test.cpp.o
+bin/myExemples: myExemples/CMakeFiles/myExemples.dir/src/main.cpp.o
 bin/myExemples: myExemples/CMakeFiles/myExemples.dir/build.make
 bin/myExemples: INTERFACE/liblibRatio.a
 bin/myExemples: myExemples/CMakeFiles/myExemples.dir/link.txt

@@ -55,18 +55,21 @@ CMAKE_BINARY_DIR = /home/emily-rose/Documents/projet_maths_info/BiliB/build
 # The main recursive "all" target.
 all: INTERFACE/all
 all: myExemples/all
+all: myTest/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: INTERFACE/preinstall
 preinstall: myExemples/preinstall
+preinstall: myTest/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: INTERFACE/clean
 clean: myExemples/clean
+clean: myTest/clean
 
 .PHONY : clean
 
@@ -125,6 +128,24 @@ myExemples/preinstall:
 myExemples/clean: myExemples/CMakeFiles/myExemples.dir/clean
 
 .PHONY : myExemples/clean
+
+#=============================================================================
+# Directory level rules for directory myTest
+
+# Recursive "all" directory target.
+myTest/all: myTest/CMakeFiles/myTest.dir/all
+
+.PHONY : myTest/all
+
+# Recursive "preinstall" directory target.
+myTest/preinstall:
+
+.PHONY : myTest/preinstall
+
+# Recursive "clean" directory target.
+myTest/clean: myTest/CMakeFiles/myTest.dir/clean
+
+.PHONY : myTest/clean
 
 #=============================================================================
 # Target rules for target INTERFACE/CMakeFiles/libRatio.dir
@@ -206,6 +227,33 @@ myExemples: myExemples/CMakeFiles/myExemples.dir/rule
 myExemples/CMakeFiles/myExemples.dir/clean:
 	$(MAKE) -f myExemples/CMakeFiles/myExemples.dir/build.make myExemples/CMakeFiles/myExemples.dir/clean
 .PHONY : myExemples/CMakeFiles/myExemples.dir/clean
+
+#=============================================================================
+# Target rules for target myTest/CMakeFiles/myTest.dir
+
+# All Build rule for target.
+myTest/CMakeFiles/myTest.dir/all: INTERFACE/CMakeFiles/libRatio.dir/all
+	$(MAKE) -f myTest/CMakeFiles/myTest.dir/build.make myTest/CMakeFiles/myTest.dir/depend
+	$(MAKE) -f myTest/CMakeFiles/myTest.dir/build.make myTest/CMakeFiles/myTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles --progress-num=5,6 "Built target myTest"
+.PHONY : myTest/CMakeFiles/myTest.dir/all
+
+# Build rule for subdir invocation for target.
+myTest/CMakeFiles/myTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 myTest/CMakeFiles/myTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/emily-rose/Documents/projet_maths_info/BiliB/build/CMakeFiles 0
+.PHONY : myTest/CMakeFiles/myTest.dir/rule
+
+# Convenience name for target.
+myTest: myTest/CMakeFiles/myTest.dir/rule
+
+.PHONY : myTest
+
+# clean rule for target.
+myTest/CMakeFiles/myTest.dir/clean:
+	$(MAKE) -f myTest/CMakeFiles/myTest.dir/build.make myTest/CMakeFiles/myTest.dir/clean
+.PHONY : myTest/CMakeFiles/myTest.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
