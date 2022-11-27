@@ -22,6 +22,8 @@ message(VERBOSE "CMAKE_CXX_FLAGS_DEBUG   : " ${CMAKE_CXX_FLAGS_DEBUG})
 message(VERBOSE "CMAKE_CXX_FLAGS_RELEASE : " ${CMAKE_CXX_FLAGS_RELEASE})
 message(VERBOSE "CMAKE_CXX_COMPILER      : " ${CMAKE_CXX_COMPILER} "\n")
 
+
+# not clear to me, but vscode can't work fine without
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # (optional) add a "output" directory in the project binary directory

@@ -36,7 +36,7 @@ class Ratio {
     
     private :
         int m_n;
-        int m_d;
+        unsigned int m_d;
 
     public:
 
@@ -46,7 +46,7 @@ class Ratio {
         /// \brief constructor from the two integers of the ratio
         /// \param n : n is the numerator
         /// \param d : d is the denominator
-        Ratio(const int &n, const int &d);
+        Ratio(const int &n, const unsigned int &d);
 
         /// \brief constructor from a double
         /// \param x : the number to convert into a ratio number
@@ -59,7 +59,7 @@ class Ratio {
         /// \brief destructor
         ~Ratio() = default;
 
-        double getNum();
+        int getNum() const;
 
 };
 
