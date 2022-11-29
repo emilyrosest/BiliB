@@ -35,6 +35,7 @@
 class Ratio {
     
     private :
+
         int m_n;
         unsigned int m_d;
 
@@ -59,7 +60,37 @@ class Ratio {
         /// \brief destructor
         ~Ratio() = default;
 
-        int getNum() const;
+
+
+        /// @brief convert float to ratio
+        /// @param x : the number to convert into a ratio number
+        /// @param nb_iter : the number of recursive calls
+        /// @return the ratio number
+        Ratio convertToRatio(const double &x, unsigned int nb_iter);
+
+        /// @brief get the numerator of a ratio number
+        /// @return the numerator
+        int getNumerator() const;
+
+        /// @brief get the denominator of a ratio number
+        /// @return the denominator
+        int getDenominator() const;
+
+        /// @brief set the numerator of a ratio number
+        /// @param n : the new numerator
+        void setNumerator(const int &n);
+
+        /// @brief set the denominator of a ratio number
+        /// @param d : the new denominator
+        void setDenominator(const unsigned int &d);
+
+
+        void reduce();
+
+
+        Ratio operator+(const Ratio &r) const;
+
+        Ratio operator/(const Ratio &r) const;
 
 };
 

@@ -1,17 +1,17 @@
 [
 {
   "directory": "/home/emily-rose/Documents/projet_maths_info/BiliB/build/INTERFACE",
-  "command": "/usr/bin/g++   -I/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/include  -g   -Wall -O2 -o CMakeFiles/libRatio.dir/src/Ratio.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/src/Ratio.cpp",
+  "command": "/usr/bin/g++   -I/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/include  -g   -Wall -O2 -std=gnu++17 -o CMakeFiles/libRatio.dir/src/Ratio.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/src/Ratio.cpp",
   "file": "/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/src/Ratio.cpp"
 },
 {
   "directory": "/home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples",
-  "command": "/usr/bin/g++   -I/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/include  -g   -Wall -O2 -o CMakeFiles/myExemples.dir/src/main.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/main.cpp",
+  "command": "/usr/bin/g++   -I/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/include  -g   -Wall -O2 -std=gnu++17 -o CMakeFiles/myExemples.dir/src/main.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/main.cpp",
   "file": "/home/emily-rose/Documents/projet_maths_info/BiliB/myExemples/src/main.cpp"
 },
 {
   "directory": "/home/emily-rose/Documents/projet_maths_info/BiliB/build/myTest",
-  "command": "/usr/bin/g++   -I/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/include  -g   -o CMakeFiles/myTest.dir/src/test.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/myTest/src/test.cpp",
+  "command": "/usr/bin/g++   -I/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/include  -g   -std=gnu++17 -o CMakeFiles/myTest.dir/src/test.cpp.o -c /home/emily-rose/Documents/projet_maths_info/BiliB/myTest/src/test.cpp",
   "file": "/home/emily-rose/Documents/projet_maths_info/BiliB/myTest/src/test.cpp"
 }
 ]
