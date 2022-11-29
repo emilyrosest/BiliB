@@ -1,4 +1,4 @@
-# Install script for directory: /home/emily-rose/Documents/projet_maths_info/BiliB/libRatio
+# Install script for directory: /home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/libRatio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -37,6 +37,11 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
    "/usr/local/include/libRatio/Ratio.hpp")
@@ -46,7 +51,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/include/libRatio" TYPE FILE FILES "/home/emily-rose/Documents/projet_maths_info/BiliB/libRatio/include/Ratio.hpp")
+file(INSTALL DESTINATION "/usr/local/include/libRatio" TYPE FILE FILES "/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/libRatio/include/Ratio.hpp")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -58,12 +63,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/home/emily-rose/Documents/projet_maths_info/BiliB/build/INTERFACE/liblibRatio.a")
+file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/build/INTERFACE/liblibRatio.a")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/emily-rose/Documents/projet_maths_info/BiliB/build/INTERFACE/doc/cmake_install.cmake")
+  include("/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/build/INTERFACE/doc/cmake_install.cmake")
 
 endif()
 

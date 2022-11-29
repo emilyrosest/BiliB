@@ -1,4 +1,4 @@
-# Install script for directory: /home/emily-rose/Documents/projet_maths_info/BiliB
+# Install script for directory: /home/6ima2/quentin.huet2/Documents/Projetc++/BiliB
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -37,11 +37,16 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/emily-rose/Documents/projet_maths_info/BiliB/build/INTERFACE/cmake_install.cmake")
-  include("/home/emily-rose/Documents/projet_maths_info/BiliB/build/myExemples/cmake_install.cmake")
-  include("/home/emily-rose/Documents/projet_maths_info/BiliB/build/myTest/cmake_install.cmake")
+  include("/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/build/INTERFACE/cmake_install.cmake")
+  include("/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/build/myExemples/cmake_install.cmake")
+  include("/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/build/myTest/cmake_install.cmake")
 
 endif()
 
@@ -53,5 +58,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/emily-rose/Documents/projet_maths_info/BiliB/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/6ima2/quentin.huet2/Documents/Projetc++/BiliB/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
