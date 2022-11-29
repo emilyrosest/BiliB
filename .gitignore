@@ -1,6 +1,2 @@
-build
-bin
-.vscode/
 
-./libRatio/build
-./myExemples/build
+.vscode/
