@@ -82,7 +82,7 @@ Ratio Ratio::convertToRatio(const double &x, unsigned int nb_iter) {
         return Ratio(1, 1)/convertToRatio(1/x, nb_iter);
     }
 
-    if (x > 1) {
-        //return Ratio(1, 1)/convertToRatio(1/x, nb_iter);
-    }
+    // if (x > 1) {
+    //     //return Ratio(1, 1)/convertToRatio(1/x, nb_iter);
+    // }
 }
