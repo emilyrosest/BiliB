@@ -3,6 +3,9 @@
 #include <fstream>
 
 
+static unsigned int nb_iter = 10;
+
+
 // #ifdef __LIBRATIO__HPP
 // #define __LIBRATIO__HPP
 
@@ -31,6 +34,9 @@
 
 /// \class Ratio
 /// \brief class defining a number written as a ratio between two integers
+
+
+
 
 class Ratio {
     
@@ -66,23 +72,23 @@ class Ratio {
         /// @param x : the number to convert into a ratio number
         /// @param nb_iter : the number of recursive calls
         /// @return the ratio number
-        Ratio convertToRatio(const double &x, unsigned int nb_iter);
+        Ratio convertFloatToRatio(const double &x, unsigned int nb_iter);
 
         /// @brief get the numerator of a ratio number
         /// @return the numerator
-        int getNumerator() const;
+        inline int getNumerator() const { return m_n; };
 
         /// @brief get the denominator of a ratio number
         /// @return the denominator
-        int getDenominator() const;
+        inline int getDenominator() const { return m_d; };
 
         /// @brief set the numerator of a ratio number
         /// @param n : the new numerator
-        void setNumerator(const int &n);
+        inline void setNumerator(const int &n) { m_n = n; };
 
         /// @brief set the denominator of a ratio number
         /// @param d : the new denominator
-        void setDenominator(const unsigned int &d);
+        inline void setDenominator(const unsigned int &d) { m_d = d; };
 
 
         void reduce();
@@ -90,7 +96,15 @@ class Ratio {
 
         Ratio operator+(const Ratio &r) const;
 
+        Ratio operator-(const Ratio &r) const; 
+
         Ratio operator/(const Ratio &r) const;
+
+        Ratio operator*(const Ratio &r) const;
+
+        Ratio operator*(const double &n) const;
+
+
 
 };
 

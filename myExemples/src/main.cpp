@@ -34,6 +34,13 @@ int main()
     Ratio myCopyRatio(myRatio2);
     std::cout << myCopyRatio.getNumerator() << std::endl;
 
+    //Constructor from dfloat
+    Ratio fRatio(2.5);
+    std::cout << fRatio.getNumerator() << std::endl;
+    std::cout << fRatio.getDenominator() << std::endl;
+
+    std::cout << (fRatio*6.0).getNumerator() << std::endl;
+
 
     return 0;
 }
