@@ -26,27 +26,27 @@ TEST (RatioConstructor, intergersConstructor) {
 }
 
 
-// TEST (RatioFunctions, reduceFonction) {
-
-// }
-
-
-//reduce
-//constructeur avec n et d, le refaire pour qu'il reduce
-
+TEST (RatioConstructor, copyConstructor) {
+    Ratio ratio1(6, 7);
+    Ratio ratio2(ratio1);
+    ASSERT_EQ (ratio2.getNumerator(), 6);
+    ASSERT_EQ (ratio2.getDenominator(), 7);
+}
 
 
-// TEST (RatioConstructor, copyConstructor) {
-//     const size_t maxSize = 100000;  //???? prendre cette taille?
-// 	std::default_random_engine generator(0);
-// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+TEST (RatioConstructor, doubleConstructor) {
+    Ratio ratio(-4.5);
+    ASSERT_EQ (ratio.getNumerator(), -9);
+    ASSERT_EQ (ratio.getDenominator(), 2);
+}
 
-//     for(int run=0; run<100; ++run) {
 
-//         Ratio ratio1(gen(), gen());
-//     }
-// }
+TEST (RatioFunctions, reduceFonction) {
+    Ratio ratio(9, 3);
+    ASSERT_EQ (ratio.getNumerator(), 3);
+    ASSERT_EQ (ratio.getDenominator(), 1);
+}
 
-//converttoratio
+
+
+
