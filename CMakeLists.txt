@@ -1,14 +1,13 @@
 cmake_minimum_required(VERSION 3.13)
 
-# give a name to the project
 project(BiliB)
 
-# add myLib
-message(STATUS "myLib cmake part ..." )
+# add libRatio
+message(STATUS "libRatio cmake part ..." )
 add_subdirectory(libRatio INTERFACE)
-include_directories(${CMAKE_SOURCE_DIR}/libRatio/include) # important : other projects call by this cmake will know this include directory
+include_directories(${CMAKE_SOURCE_DIR}/libRatio/include)
 
-# add myCode
+# add myExemples
 message(STATUS "myExemples cmake part ..." )
 add_subdirectory(myExemples)
 
