@@ -98,14 +98,18 @@ class Ratio {
 
         Ratio operator-(const Ratio &r) const; 
 
+        Ratio operator-() const;
+
         Ratio operator/(const Ratio &r) const;
 
         Ratio operator*(const Ratio &r) const;
 
-        Ratio operator*(const double &n) const;
+        Ratio operator*(const double &value) const;
 
 
+        //Ratio operator*(const double &value, const Ratio &ratio) const;
 
 };
 
 // #endif
+
