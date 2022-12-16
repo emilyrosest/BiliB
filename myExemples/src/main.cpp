@@ -12,34 +12,34 @@ int main()
     bidule++;
 
 
-    std::cout << "salut a tous!!! " << std::endl << bidule << std::endl;
+    // std::cout << "salut a tous!!! " << std::endl << bidule << std::endl;
 
-    //CONSTRUCTEUR DEFAUT
-    std::cout << myRatio.getNumerator() << std::endl;
+    // //CONSTRUCTEUR DEFAUT
+    // std::cout << myRatio.getNumerator() << std::endl;
 
     
-    //2E CONSTRUCTEUR
-    int n = 2;
-    unsigned int d = 3;
-    Ratio myRatio2(n, d);
-    std::cout << myRatio2.getNumerator() << std::endl;
-    int x = myRatio2.getNumerator();
-    x++;
-    std::cout << x << std::endl;
+    // //2E CONSTRUCTEUR
+    // int n = 2;
+    // unsigned int d = 3;
+    // Ratio myRatio2(n, d);
+    // std::cout << myRatio2.getNumerator() << std::endl;
+    // int x = myRatio2.getNumerator();
+    // x++;
+    // std::cout << x << std::endl;
 
-    Ratio myRatio3(4, 5);
-    std::cout << myRatio3.getNumerator() << std::endl;
+    // Ratio myRatio3(4, 5);
+    // std::cout << myRatio3.getNumerator() << std::endl;
 
-    //COPY CONSTRUCTEUR
-    Ratio myCopyRatio(myRatio2);
-    std::cout << myCopyRatio.getNumerator() << std::endl;
+    // //COPY CONSTRUCTEUR
+    // Ratio myCopyRatio(myRatio2);
+    // std::cout << myCopyRatio.getNumerator() << std::endl;
 
-    //Constructor from dfloat
-    Ratio fRatio(2.5);
-    std::cout << fRatio.getNumerator() << std::endl;
-    std::cout << fRatio.getDenominator() << std::endl;
+    // //Constructor from dfloat
+    // Ratio fRatio(2.5);
+    // std::cout << fRatio.getNumerator() << std::endl;
+    // std::cout << fRatio.getDenominator() << std::endl;
 
-    std::cout << (fRatio*6.0).getNumerator() << std::endl;
+    // std::cout << (fRatio*6.0).getNumerator() << std::endl;
 
 
     return 0;

@@ -3,12 +3,6 @@
 
 #include "Ratio.hpp"
 
-///
-// conversions
-
-
-
-
 
 TEST (RatioConstructor, defaultContructor) {
     Ratio ratio;
@@ -32,25 +26,25 @@ TEST (RatioConstructor, copyConstructor) {
 }
 
 
-TEST (RatioConstructor, doubleConstructor) {
-    Ratio ratio(-4.5);
-    ASSERT_EQ (ratio.getNumerator(), -9);
-    ASSERT_EQ (ratio.getDenominator(), 2);
-}
+// TEST (RatioConstructor, doubleConstructor) {
+//     Ratio ratio(-4.5);
+//     ASSERT_EQ (ratio.getNumerator(), -9);
+//     ASSERT_EQ (ratio.getDenominator(), 2);
+// }
 
-////
-// fonctions
+// ////
+// // fonctions
 
-TEST (RatioFunctions, reduceFonction) {
-    Ratio ratio(9, 3);
-    ASSERT_EQ (ratio.getNumerator(), 3);
-    ASSERT_EQ (ratio.getDenominator(), 1);
-}
+// TEST (RatioFunctions, reduceFonction) {
+//     Ratio ratio(9, 3);
+//     ASSERT_EQ (ratio.getNumerator(), 3);
+//     ASSERT_EQ (ratio.getDenominator(), 1);
+// }
 
-TEST (RatioFunctions, RatioToFloat) {
-    Ratio ratio(2, 4);
-    ASSERT_EQ (ratio.convertRatioToFloat(), 0.5);
-}
+// TEST (RatioFunctions, RatioToFloat) {
+//     Ratio ratio(2, 4);
+//     ASSERT_EQ (ratio.convertRatioToFloat(), 0.5);
+// }
 
 
 
@@ -58,4 +52,3 @@ int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
-
