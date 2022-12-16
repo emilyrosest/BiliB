@@ -74,6 +74,10 @@ class Ratio {
         /// @return the ratio number
         Ratio convertFloatToRatio(const double &x, unsigned int nb_iter);
 
+        /// @brief convert ratio to float
+        /// @return the float number
+        float convertRatioToFloat();
+
         /// @brief get the numerator of a ratio number
         /// @return the numerator
         inline int getNumerator() const { return m_n; };

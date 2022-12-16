@@ -7,6 +7,11 @@
 
 #include "Ratio.hpp"
 
+///
+// conversions
+
+
+
 
 /////////////////////////////////////////////////////
 // constructors
@@ -39,12 +44,21 @@ TEST (RatioConstructor, doubleConstructor) {
     ASSERT_EQ (ratio.getDenominator(), 2);
 }
 
+////
+// fonctions
 
 TEST (RatioFunctions, reduceFonction) {
     Ratio ratio(9, 3);
     ASSERT_EQ (ratio.getNumerator(), 3);
     ASSERT_EQ (ratio.getDenominator(), 1);
 }
+
+TEST (RatioFunctions, RatioToFloat) {
+    Ratio ratio(2, 4);
+    ASSERT_EQ (ratio.convertRatioToFloat(), 0.5);
+}
+
+
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

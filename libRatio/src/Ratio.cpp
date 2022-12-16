@@ -44,6 +44,9 @@ Ratio Ratio::convertFloatToRatio(const double &x, unsigned int nb_iter) {
     }
 }
 
+float Ratio::convertRatioToFloat() {
+    return float(m_n) / float(m_d);
+}
 
 
 void Ratio::reduce() {
