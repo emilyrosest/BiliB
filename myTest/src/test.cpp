@@ -7,13 +7,6 @@
 
 #include "Ratio.hpp"
 
-<<<<<<< HEAD
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
-=======
-
 
 /////////////////////////////////////////////////////
 // constructors
@@ -57,3 +50,4 @@ int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
+
