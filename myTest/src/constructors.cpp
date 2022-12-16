@@ -1,15 +1,9 @@
-#include <random>
 #include <string>
-#include <algorithm>
-#include <limits>
-
 #include <gtest/gtest.h>
 
 #include "Ratio.hpp"
 
 
-/////////////////////////////////////////////////////
-// constructors
 
 TEST (RatioConstructor, defaultContructor) {
     Ratio ratio;
@@ -45,6 +39,7 @@ TEST (RatioFunctions, reduceFonction) {
     ASSERT_EQ (ratio.getNumerator(), 3);
     ASSERT_EQ (ratio.getDenominator(), 1);
 }
+
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
