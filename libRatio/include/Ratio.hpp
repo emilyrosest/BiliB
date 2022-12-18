@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <numeric>
+#include <cassert>
 
 
 static unsigned int nb_iter = 10;
@@ -55,10 +56,9 @@ class Ratio {
         /// \param n : n is the numerator
         /// \param d : d is the denominator
         Ratio(const T &n, const T &d) {
-            // à faire : vérifier si le dénominateur est négatif
-            // si c'est le cas, mettre le numérateur négatif
-            m_n = n;
-            m_d = d;
+            assert(d != 0 && "denominator should not be zero");
+            m_n = (d > static_cast<T>(0)) ? n : -n;
+            m_d = abs(d);
             reduce();
         }
 
@@ -74,11 +74,6 @@ class Ratio {
         ~Ratio() = default;
 
 
-        /// @brief convert ratio to number
-        /// @return the normal number
-        template <typename U>
-        U convertToNumber();
-
         /// @brief get the numerator of a ratio number
         /// @return the numerator
         inline T getNumerator() const { return m_n; };
@@ -89,11 +84,12 @@ class Ratio {
 
         /// @brief set the numerator of a ratio number
         /// @param n : the new numerator
-        inline void setNumerator(const T &n) { m_n = n; };
+        inline void setNumerator(const T &n) { m_n = n; reduce();};
 
         /// @brief set the denominator of a ratio number
         /// @param d : the new denominator
-        inline void setDenominator(const T &d) { m_d = d; };
+        inline void setDenominator(const T &d) { m_d = d; reduce();};
+
 
         /// @brief transform the ratio into an irreducible fraction
         void reduce(){
@@ -101,6 +97,28 @@ class Ratio {
             m_n /= pgcd;
             m_d /= pgcd;
         }
+
+        /// @brief inverse the ratio
+        void inverse() {
+            T num = m_n;
+            m_n = m_d;
+            m_d = num;
+        }
+
+        /// @brief devides the numerator by the denominator
+        /// @return the remainder
+        T remainder() {
+            return m_n % m_d;
+        }
+
+        // /// @brief convert ratio to number
+        // /// @return the normal number
+        // template <typename U>
+        // U convertToNumber();
+
+
+        ////////////////////////////////
+        //ARITHMETIC OPERATORS
 
         /// @brief add 2 ratio
         /// @param r ratio to add to the calling ratio
@@ -172,8 +190,70 @@ class Ratio {
             return result;
         }
 
+        // Ratio operator%(const Ratio &r) const {
+        //     Ratio result = this / r;
+        //     return result.remainder();
+        // }
+
+        // Ratio operator++() const {
+        //     this +=
+        // }
+
+
+
+        ////////////////////////////////////
+        //ASSIGNMENT OPERATORS
+
+        /// @brief assign a ratio to another
+        /// @param r the ratio to assign
+        /// @return the ratio assigned
+        Ratio operator=(const Ratio &r) const {
+            if (&r == this) return *this;
+
+            m_n = r.m_n;
+            m_d = r.m_d;
+
+            return *this;
+        }
+
+        // Ratio operator+=(const Ratio &r) const {
+        //     *m_n = m_n * r.m_d + m_d * r.m_n;
+        //     *m_d = m_d * r.m_d;
+        //     reduce();
+
+        //     return *this;
+        // }
+
+
+
+        ///////////////////////////////////
+        //RELATIONAL OPERATORS
+
+        /// @brief comparison of 2 ratio
+        /// @param r the compared ratio
+        /// @return true if the 2 ratio are equal, false if not
+        bool operator==(const Ratio &r) const {
+            return (m_n == r.m_n && m_d == r.m_d);
+        }
+
+
+        
+
 
 };
+
+/// @brief overload the operator << for Ratio
+/// @tparam T the type of the ratio
+/// @param stream input stream
+/// @param ratio the ratio to output
+/// @return the output stream containing the ratio
+template <typename T>
+std::ostream& operator<< (std::ostream& stream, Ratio<T> ratio) {
+    stream << ratio.getNumerator() << "/" << ratio.getDenominator();
+    return stream;
+}
+
+
 
 /// @brief convert float to ratio
 /// @param x : the number to convert into a ratio number
@@ -181,8 +261,8 @@ class Ratio {
 /// @return the ratio number
 template<typename T, typename U = int>
 Ratio<U> convertToRatio(const T &x, unsigned int nb_iter) {
-    if (x < 0)
-        return -convertToRatio<T>(-x, nb_iter);
+    if (x < 0) // static_cast<T>(0) a la place de 0?
+        return -convertToRatio<U>(-x, nb_iter);
 
     if (x == 0)
         return Ratio<U>();
@@ -191,19 +271,20 @@ Ratio<U> convertToRatio(const T &x, unsigned int nb_iter) {
         return Ratio<U>();
 
     if (x < 1)
-        return Ratio<U>(1, 1)/convertToRatio<T>(1/x, nb_iter);
+        return Ratio<U>(1, 1)/convertToRatio<U>(1/x, nb_iter);
 
     if (x > 1) {
         int q = (int)x;
-        return Ratio<U>(q, 1) + convertToRatio<T>(x - q, nb_iter - 1);
+        std::cout << q << std::endl;
+        return Ratio<U>(q, 1) + convertToRatio<U>(x - q, nb_iter - 1);
     }
 }
 
 
-// faire la multiplication dans le sens value * ratio
-// Ratio<T> T::operator*(const Ratio &r) {
-//     return r*T;
-// }
+template <typename T, typename U>
+Ratio<T> operator*(const U value, const Ratio<T> &r) {
+    return r * value;
+}
 
 // #endif
 

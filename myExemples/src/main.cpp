@@ -41,6 +41,11 @@ int main()
 
     // std::cout << (fRatio*6.0).getNumerator() << std::endl;
 
+    // Ratio ratio = convertToRatio<float>(3.2, nb_iter);
+    // std::cout << ratio.getNumerator() << std::endl;
+    // std::cout << ratio.getDenominator() << std::endl;
+
+
 
     return 0;
 }
