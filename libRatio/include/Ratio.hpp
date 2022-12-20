@@ -104,13 +104,8 @@ class Ratio {
         }
 
         /// @brief inverse the ratio
-        void inverse() {
-            T num = m_n;
-            m_n = m_d;
-            m_d = num;
-        }
-
-        Ratio inverse2() {
+        /// @return the inversed ratio
+        Ratio inverse() {
             return Ratio(m_d, m_n);
         }
 
@@ -120,6 +115,7 @@ class Ratio {
             return m_n % m_d;
         }
 
+// suppr??
         T sameDenominator(Ratio &r) {
             // T d = m_d * r.m_d;
             // this->m_n = m_n * r.m_d;
@@ -127,6 +123,16 @@ class Ratio {
             // r.m_n = r.m_n * m_d;
             // r.m_d = d;
             return m_d * r.m_d;
+        }
+
+        /// @brief the absolute value of a ratio
+        /// @return the absolute value
+        Ratio absolute() {
+            return (m_n < static_cast<T>(0)) ? -*this : *this;
+        }
+
+        T floor() {
+            return static_cast<T>(m_n / m_d);
         }
 
         // /// @brief convert ratio to number
@@ -315,6 +321,7 @@ class Ratio {
             return (m_n * r.m_d <= r.m_n * m_d);
         }
 
+        
 
         
 
@@ -343,12 +350,12 @@ Ratio<U> convertToRatio(const T &x, unsigned int nb_iter) {
 
     std::cout << "x = " << x << std::endl;
 
-    constexpr T ONE = static_cast<T>(1);
+    //constexpr T ONE = static_cast<T>(1);
     constexpr T ZERO = static_cast<T>(0);
 
     if (x < ZERO){ 
         std::cout << "inf 0" << std::endl;
-        return -convertToRatio<T>(-x, nb_iter);
+        return -convertToRatio(-x, nb_iter);
     }
 
     if (x == ZERO) {
@@ -361,26 +368,51 @@ Ratio<U> convertToRatio(const T &x, unsigned int nb_iter) {
         return Ratio<U>();
     }
 
-    if (x < ONE) {
-        std::cout << "ici" << std::endl;
-        std::cout << ONE /static_cast<T>(x) << std::endl;
-        return convertToRatio<T>(ONE / static_cast<T>(x), nb_iter).inverse2();
+    if (x < static_cast<T>(1)) {
+        std::cout << "x < 1" << std::endl;
+        return convertToRatio(static_cast<T>(1) / static_cast<T>(x), nb_iter).inverse();
     }
 
-    if (x >= static_cast<T>(1)) {
-        int q = (int)x;
-        // std::cout << "derniere" << std::endl;
-        // std::cout << x << std::endl;
-        // std::cout << "q = " << q << std::endl;
-        std::cout << "x - q = " << x - q << std::endl;
-        return Ratio<U>(q, static_cast<U>(1)) + convertToRatio<T>(static_cast<T>(x - q), nb_iter - 1);
-    }
+    U q = static_cast<U>(x);
+    std::cout << "q = " << q << std::endl;
+    std::cout << "x - q = " << x - q << std::endl;
+    return Ratio<U>(q, static_cast<T>(1)) + convertToRatio(x - q, nb_iter - 1);
 }
 
 
 template <typename T, typename U>
 Ratio<T> operator*(const U value, const Ratio<T> &r) {
     return r * value;
+}
+
+
+template <typename T>
+Ratio<T> product(Ratio<T> first) {
+            return first;
+}
+template <typename T, typename ... Args>
+Ratio<T> product(const Ratio<T> &ratio, const Args ... args) {
+    return ratio * product(args...);
+}
+
+
+template <typename T>
+Ratio<T> addition(Ratio<T> first) {
+            return first;
+}
+template <typename T, typename ... Args>
+Ratio<T> addition(const Ratio<T> &ratio, const Args ... args) {
+    return ratio + addition(args...);
+}
+
+
+template <typename T>
+Ratio<T> subtraction(Ratio<T> first) {
+            return - first;
+}
+template <typename T, typename ... Args>
+Ratio<T> subtraction(const Ratio<T> &ratio, const Args ... args) {
+    return ratio - subtraction(args...);
 }
 
 

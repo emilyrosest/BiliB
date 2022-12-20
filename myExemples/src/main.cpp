@@ -45,11 +45,15 @@ int main()
     // std::cout << ratio.getNumerator() << std::endl;
     // std::cout << ratio.getDenominator() << std::endl;
 
-    Ratio ratio = convertToRatio(11.6, nb_iter); //9.6 = 48/5, 12.8 = 64/5, (7.5 = 45/6), (5.25=42/8), 11.6=58/5
-    std::cout << ratio << std::endl;
+    // Ratio ratio = convertToRatio(11.6, nb_iter); //9.6 = 48/5, 12.8 = 64/5, (7.5 = 45/6), (5.25=42/8), 11.6=58/5
+    // std::cout << ratio << std::endl;
 
-    // Ratio ratio(2, 3);
-    // std::cout << ratio.inverse2() << std::endl;
+    // Ratio ratio1(1, 2);
+    // Ratio ratio2(3, 2);
+    // Ratio ratio3(7, 3);
+    // std::cout << product<int>(ratio1, ratio2, ratio3) << std::endl;
+
+
 
     return 0;
 }
