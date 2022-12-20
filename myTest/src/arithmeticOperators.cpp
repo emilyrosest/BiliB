@@ -66,3 +66,17 @@ TEST (RatioArithmetic, value_multiply) {
 //     ASSERT_EQ (result.getNumerator(), 0);
 //     ASSERT_EQ (result.getDenominator(), 1);
 // }
+
+TEST (RatioArithmetic, increment) {
+    Ratio ratio(2, 3);
+    ++ratio;
+    ASSERT_EQ (ratio.getNumerator(), 5);
+    ASSERT_EQ (ratio.getDenominator(), 3);
+}
+
+TEST (RatioArithmetic, decrement) {
+    Ratio ratio(2, 3);
+    --ratio;
+    ASSERT_EQ (ratio.getNumerator(), -1);
+    ASSERT_EQ (ratio.getDenominator(), 3);
+}
