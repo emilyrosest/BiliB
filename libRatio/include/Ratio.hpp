@@ -130,7 +130,7 @@ class Ratio {
         /// @brief add 2 ratio
         /// @param r : ratio to add to the calling ratio
         /// @return the sum of the current ratio and the argument ratio
-        inline Ratio<T> operator+(const Ratio &r) const { return Ratio(m_n * r.m_d + m_d * r.m_n, m_d * r.m_d);};
+        inline Ratio<T> operator+(const Ratio<T> &r) const { return Ratio<T>(m_n * r.m_d + m_d * r.m_n, m_d * r.m_d);};
 
         /// @brief add a ratio and a number
         /// @tparam U : the type of the number
@@ -138,14 +138,14 @@ class Ratio {
         /// @return the sum of the current ratio and the argument number
         template <typename U>
         Ratio<T> operator+(const U &value) const { 
-            Ratio ratioValue = convertToRatio<U>(value, nbIter);
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
             return *this + ratioValue;
         }
 
         /// @brief subtract a ratio to the current ratio
         /// @param r : ratio to subtract to the calling ratio
         /// @return the subtraction of the current ratio and the argument ratio
-        inline Ratio operator-(const Ratio &r) const { return Ratio(m_n * r.m_d - m_d * r.m_n, m_d * r.m_d);};
+        inline Ratio<T> operator-(const Ratio<T> &r) const { return Ratio<T>(m_n * r.m_d - m_d * r.m_n, m_d * r.m_d);};
 
         /// @brief subtract a number to the current ratio
         /// @tparam U : the type of the number
@@ -153,28 +153,39 @@ class Ratio {
         /// @return the subtraction of the current ratio and the argument number
         template <typename U>
         Ratio<T> operator-(const U &value) const { 
-            Ratio ratioValue = convertToRatio<U>(value, nbIter);
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
             return *this - ratioValue;
-        } //ici
+        } 
 
         /// @brief invert the ratio's sign
         /// @return the inverted ratio
-        inline Ratio operator-() const { return Ratio(-m_n, m_d);};
+        inline Ratio<T> operator-() const { return Ratio<T>(-m_n, m_d);};
 
         /// @brief divide the ratio by another ratio
         /// @param r : the denominator of the division
         /// @return the division of the current ratio and the argument ratio
-        inline Ratio operator/(const Ratio &r) const { return Ratio(m_n * r.m_d, m_d * r.m_n);};
+        inline Ratio<T> operator/(const Ratio<T> &r) const { return Ratio<T>(m_n * r.m_d, m_d * r.m_n);};
+
+        /// @brief divide a ratio by a number
+        /// @tparam U : the type of the number
+        /// @param value : the value to divide to the ratio
+        /// @return the division of the current ratio by the argument number
+        template <typename U>
+        Ratio<T> operator/(const U &value) const { 
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            return *this / ratioValue;
+        }
 
         /// @brief multiply the ratio by another ratio
         /// @param r : the ratio used to multiply
         /// @return the multiplication of the current ratio and the argument ratio
-        inline Ratio operator*(const Ratio &r) const { return Ratio(m_n * r.m_n, m_d * r.m_d);};
+        inline Ratio<T> operator*(const Ratio<T> &r) const { return Ratio<T>(m_n * r.m_n, m_d * r.m_d);};
 
         /// @brief multiply the ratio by a value
         /// @param value : the value to multiply the ratio
         /// @return the multiplication of the current ratio and the given value
-        inline Ratio operator*(const T &value) const { return Ratio(m_n * value, m_d);};
+        template <typename U>
+        Ratio<T> operator*(const U &value) const { return Ratio<T>(m_n * value, m_d);}
 
         /// @brief divide the ratio by another and gives the remainder
         /// @tparam U : the type of the remainder
@@ -319,8 +330,37 @@ Ratio<T> operator+(const U &value, const Ratio<T> &r) {
     return ratioValue + r;
 }
 
+/// @brief subtract a ratio to a number
+/// @tparam U : the type of the number
+/// @tparam T : the type of the ratio
+/// @param value : the value to subtract the ratio
+/// @param r : the ratio
+/// @return the subtraction of the ratio to the number
 template <typename T, typename U>
-Ratio<T> operator*(const U value, const Ratio<T> &r) {
+Ratio<T> operator-(const U &value, const Ratio<T> &r) { 
+    Ratio ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue - r;
+}
+
+// /// @brief divide a ratio by a number
+// /// @tparam U : the type of the number
+// /// @param value : the value to divide to the ratio
+// /// @return the division of the current ratio by the argument number
+// template <typename T, typename U>
+// Ratio<T> operator/(const U &value, const Ratio<T> &r) { 
+//     Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+//     //return ratioValue / r;
+//     //return Ratio<T>(ratioValue.getNumerator() * r.getDenominator(), ratioValue.getDenominator() * r.getNumerator());
+// } //marche pas
+
+/// @brief multiply a value by a ratio
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to multiply
+/// @param r : the ratio to multiply
+/// @return the multiplication of the value by the ratio
+template <typename T, typename U>
+Ratio<T> operator*(const U &value, const Ratio<T> &r) {
     return r * value;
 }
 

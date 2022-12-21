@@ -28,12 +28,28 @@ TEST (RatioArithmetic, valuePlus) {
     ASSERT_EQ (result.getDenominator(), 12);
 }
 
-TEST (RatioArithmetic, minus) {
+TEST (RatioArithmetic, minusRatio) {
     Ratio ratio1(5, 3);
     Ratio ratio2(8, 6);
     Ratio result = ratio1 - ratio2;
     ASSERT_EQ (result.getNumerator(), 1);
     ASSERT_EQ (result.getDenominator(), 3);
+}
+
+TEST (RatioArithmetic, minusValue) {
+    Ratio ratio(3, 5);
+    float value = 3.2;
+    Ratio result = ratio - value;
+    ASSERT_EQ (result.getNumerator(), -13);
+    ASSERT_EQ (result.getDenominator(), 5);
+}
+
+TEST (RatioArithmetic, valueMinus) {
+    Ratio ratio(3, 5);
+    float value = 3.2;
+    Ratio result = value - ratio;
+    ASSERT_EQ (result.getNumerator(), 13);
+    ASSERT_EQ (result.getDenominator(), 5);
 }
 
 TEST (RatioArithmetic, unaryMinus) {
@@ -51,6 +67,22 @@ TEST (RatioArithmetic, divide) {
     ASSERT_EQ (result.getDenominator(), 4);
 }
 
+TEST (RatioArithmetic, divideValue) {
+    Ratio ratio(6, 3); 
+    double value = 1.6;
+    Ratio result = ratio/value;
+    ASSERT_EQ (result.getNumerator(), 5);
+    ASSERT_EQ (result.getDenominator(), 4);
+}
+
+// TEST (RatioArithmetic, valueDivide) {
+//     int value = 2;
+//     Ratio ratio(6, 3); 
+//     Ratio result = value / ratio;
+//     ASSERT_EQ (result.getNumerator(), 1);
+//     ASSERT_EQ (result.getDenominator(), 1);
+// }
+
 TEST (RatioArithmetic, multiply) {
     Ratio ratio1(6, 3); 
     Ratio ratio2(8, 5);
@@ -59,15 +91,15 @@ TEST (RatioArithmetic, multiply) {
     ASSERT_EQ (result.getDenominator(), 5);
 }
 
-TEST (RatioArithmetic, multiply_value) {
+TEST (RatioArithmetic, multiplyValue) {
     Ratio ratio(8, 5);
     int value = 3;
-    Ratio result = ratio*value;
+    Ratio result = ratio * value;
     ASSERT_EQ (result.getNumerator(), 24);
     ASSERT_EQ (result.getDenominator(), 5);
 }
 
-TEST (RatioArithmetic, value_multiply) {
+TEST (RatioArithmetic, valueMultiply) {
     int value = 5;
     Ratio ratio(4, 3);
     Ratio result = value * ratio;
