@@ -24,19 +24,6 @@ TEST (RatioFunctions, remainderFunction) {
     ASSERT_EQ (ratio2.remainder(), 0);
 }
 
-TEST (RatioFunctions, sameDenominator) {
-    Ratio ratio1(5, 3);
-    Ratio ratio2(2, 4);
-    // ratio1.sameDenominator(ratio2);
-    // ASSERT_EQ (ratio1.getNumerator(), 10);
-    // ASSERT_EQ (ratio1.getDenominator(), 6);
-    // ASSERT_EQ (ratio2.getNumerator(), 3);
-    // ASSERT_EQ (ratio2.getDenominator(), 6);
-    // ASSERT_EQ (ratio1.getDenominator(), ratio2.getDenominator());
-    ASSERT_EQ (ratio1.sameDenominator(ratio2), 6);
-
-}
-
 TEST (RatioFunctions, absolute) {
     Ratio ratio(-4, 7);
     Ratio absoluteRatio = ratio.absolute();
@@ -53,18 +40,16 @@ TEST (RatioFunctions, floor) {
     ASSERT_EQ (ratio.floor(), 7);
 }
 
-// TEST (RatioFunction, convertToRatio) {
-//     Ratio ratio = convertToRatio<float>(3.2, nb_iter);
-//     EXPECT_EQ (ratio.getNumerator(), 16);
-//     EXPECT_EQ (ratio.getDenominator(), 5);
-// }
+TEST (RatioFunction, convertToRatio) {
+    Ratio ratio = convertToRatio<float>(3.2, nbIter);
+    EXPECT_EQ (ratio.getNumerator(), 16);
+    EXPECT_EQ (ratio.getDenominator(), 5);
+}
 
-
-// TEST (RatioFunctions, RatioToFloat) {
-//     Ratio ratio(2, 4);
-//     ASSERT_EQ (ratio.convertRatioToFloat(), 0.5);
-// }
-
+TEST (RatioFunctions, convertToNumber) {
+    Ratio ratio(5, 2);
+    ASSERT_EQ (ratio.convertToNumber(), 2.5);
+}
 
 TEST (RatioVariadic, product) {
     Ratio ratio1(1, 2);

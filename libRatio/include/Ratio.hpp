@@ -5,7 +5,7 @@
 #include <cassert>
 
 
-static unsigned int nb_iter = 10;
+static unsigned int nbIter = 10;
 
 
 // #ifdef __LIBRATIO__HPP
@@ -31,7 +31,6 @@ static unsigned int nb_iter = 10;
 /// \li The documentation is located in :
 ///     - [path to build]/doc/doc-doxygen/html/index.html or 
 ///     - or [path to build]/INTERFACE/doc/doc-doxygen/html/index.html
-/// \li euh ça marche bien du coup ou pas ??
 
 
 /// \class Ratio
@@ -56,7 +55,7 @@ class Ratio {
         /// \param n : n is the numerator
         /// \param d : d is the denominator
         Ratio(const T &n, const T &d) {
-            assert(d != 0 && "denominator should not be zero");
+            if (d == 0) throw std::string("denominator should not be zero");
             m_n = (d > static_cast<T>(0)) ? n : -n;
             m_d = abs(d);
             reduce();
@@ -66,9 +65,11 @@ class Ratio {
         /// \param ratio
         Ratio(const Ratio &ratio) : m_n(ratio.m_n), m_d(ratio.m_d) {}
 
-        // /// \brief constructor from a double
-        // /// \param x : the number to convert into a ratio number
-        // Ratio(const T &x) : m_n(convertToRatio(x, nb_iter).m_n), m_d(convertToRatio(x, nb_iter).m_d) {}
+        /// @brief constructor from a double
+        /// @tparam U : the type of the given number
+        /// @param x : the number to convert into a ratio number
+        template <typename U = float>
+        Ratio(const U &x) : m_n(convertToRatio<U>(x, nbIter).getNumerator()), m_d(convertToRatio<U>(x, nbIter).getDenominator()) {}
 
         /// \brief destructor
         ~Ratio() = default;
@@ -97,16 +98,17 @@ class Ratio {
 
 
         /// @brief transform the ratio into an irreducible fraction
-        void reduce(){
+        void reduce(){ 
             int pgcd = std::gcd((int)m_n, (int)m_d); 
+            assert(pgcd != 0 && "gcd should not be zero");
             m_n /= pgcd;
             m_d /= pgcd;
         }
 
         /// @brief inverse the ratio
         /// @return the inversed ratio
-        Ratio inverse() {
-            return Ratio(m_d, m_n);
+        Ratio<T> inverse() {
+            return Ratio<T>(m_d, m_n);
         }
 
         /// @brief devides the numerator by the denominator
@@ -115,113 +117,69 @@ class Ratio {
             return m_n % m_d;
         }
 
-// suppr??
-        T sameDenominator(Ratio &r) {
-            // T d = m_d * r.m_d;
-            // this->m_n = m_n * r.m_d;
-            // this->m_d = d;
-            // r.m_n = r.m_n * m_d;
-            // r.m_d = d;
-            return m_d * r.m_d;
-        }
-
         /// @brief the absolute value of a ratio
         /// @return the absolute value
         Ratio absolute() {
             return (m_n < static_cast<T>(0)) ? -*this : *this;
         }
 
+        /// @brief the integer part of a ratio
+        /// @return the integer part
         T floor() {
             return static_cast<T>(m_n / m_d);
         }
 
-        // /// @brief convert ratio to number
-        // /// @return the normal number
-        // template <typename U>
-        // U convertToNumber();
+        /// @brief convert ratio to number
+        /// @tparam U : the type of the number wanted
+        /// @return the number
+        template <typename U = float>
+        U convertToNumber() const{
+            return static_cast<U>(m_n) / static_cast<U>(m_d);
+        }
 
 
-        ////////////////////////////////
-        //ARITHMETIC OPERATORS
+        //////////////////////////////// ARITHMETIC OPERATORS
 
         /// @brief add 2 ratio
         /// @param r ratio to add to the calling ratio
         /// @return the sum of the current ratio and the argument ratio
-        Ratio operator+(const Ratio &r) const {
-            Ratio result;
-            result.m_n = this->m_n * r.m_d + this->m_d * r.m_n;
-            result.m_d = this->m_d * r.m_d;
-            result.reduce();
+        inline Ratio operator+(const Ratio &r) const { return Ratio(m_n * r.m_d + m_d * r.m_n, m_d * r.m_d);};
 
-            return result;
-        }
+        //ratio + autre type, ratio+ratio , ratio+T, T+ratio
 
         /// @brief subtract a ratio to the current ratio
         /// @param r ratio to subtract to the calling ratio
         /// @return the subtraction of the current ratio and the argument ratio
-        Ratio operator-(const Ratio &r) const {
-            Ratio result;
-            result.m_n = this->m_n * r.m_d - this->m_d * r.m_n;
-            result.m_d = this->m_d * r.m_d;
-            result.reduce();
-
-            return result;
-        }
+        inline Ratio operator-(const Ratio &r) const { return Ratio(m_n * r.m_d - m_d * r.m_n, m_d * r.m_d);};
 
         /// @brief invert the ratio's sign
         /// @return the inverted ratio
-        Ratio operator-() const {
-            Ratio result;
-            result.m_n = -(this->m_n);
-            result.m_d = this->m_d;
-
-            return result;
-        }
+        inline Ratio operator-() const { return Ratio(-m_n, m_d);};
 
         /// @brief divide the ratio by another ratio
         /// @param r the denominator of the division
         /// @return the division of the current ratio and the argument ratio
-        Ratio operator/(const Ratio &r) const {
-            Ratio result;
-            result.m_n = this->m_n * r.m_d;
-            result.m_d = this->m_d * r.m_n;
-            result.reduce();
-
-            return result;
-        }
+        inline Ratio operator/(const Ratio &r) const { return Ratio(m_n * r.m_d, m_d * r.m_n);};
 
         /// @brief multiply the ratio by another ratio
         /// @param r the ratio used to multiply
         /// @return the multiplication of the current ratio and the argument ratio
-        Ratio operator*(const Ratio &r) const {
-            Ratio result;
-            result.m_n = this->m_n * r.m_n;
-            result.m_d = this->m_d * r.m_d;
-            result.reduce();
-
-            return result;
-        }
+        inline Ratio operator*(const Ratio &r) const { return Ratio(m_n * r.m_n, m_d * r.m_d);};
 
         /// @brief multiply the ratio by a value
         /// @param value the value to multiply the ratio
         /// @return the multiplication of the current ratio and the given value
-        Ratio operator*(const T &value) const {
-            Ratio result;
-            result.m_n = this->m_n * value;
-            result.m_d = this->m_d;
-            result.reduce();
+        inline Ratio operator*(const T &value) const { return Ratio(m_n * value, m_d);};
 
-            return result;
-        }
-
-        //A BESOIN DE CONVERT TO RATIO
-        // Ratio operator%(const Ratio &r) const {
-        //     Ratio result = this / r;
-        //     return convertToRatio(result.remainder(), nb_iter);
-        // }
+        /// @brief divide the ratio by another and gives the remainder
+        /// @tparam U : the type of the remainder
+        /// @param r : the ratio to divide
+        /// @return the rational remainder of the division of 2 ratio
+        template <typename U = float>
+        inline Ratio operator%(const Ratio &r) const { return convertToRatio<U>((*this / r).remainder(), nbIter);}
 
         /// @brief increment the ratio by 1
-        void operator++() {
+        void operator++() { 
             Ratio one(static_cast<T>(1), static_cast<T>(1));
             *this += one;
         }
@@ -232,10 +190,7 @@ class Ratio {
             *this -= one;
         }
 
-
-
-        ////////////////////////////////////
-        //ASSIGNMENT OPERATORS
+        //////////////////////////////// ASSIGNMENT OPERATORS
 
         /// @brief assign a ratio to another
         /// @param r the ratio to assign
@@ -249,9 +204,9 @@ class Ratio {
 
         /// @brief add a ratio to the curent ratio
         /// @param r : the ratio to add
-        void operator+=(const Ratio &r) {
+        void operator+=(const Ratio &r) { //mettre en ratio
             //setRatio(m_n * r.m_d + r.m_n * m_d, m_d * r.m_d);
-            *this = *this + r;
+            *this = *this + r; //return le ratio??
         }
 
         /// @brief subtract a ratio to the curent ratio
@@ -276,8 +231,7 @@ class Ratio {
         //     *this = *this % r;
         // }
 
-        ///////////////////////////////////
-        //RELATIONAL OPERATORS
+        //////////////////////////////// RELATIONAL OPERATORS
 
         /// @brief comparison of 2 ratio
         /// @param r the compared ratio
@@ -340,43 +294,36 @@ std::ostream& operator<< (std::ostream& stream, Ratio<T> ratio) {
 }
 
 
-
-/// @brief convert float to ratio
+/// @brief convert a floating number to a ratio
+/// @tparam T : the floating type
+/// @tparam U : the int type
 /// @param x : the number to convert into a ratio number
-/// @param nb_iter : the number of recursive calls
+/// @param nbIter : the number of recursive calls
 /// @return the ratio number
 template<typename T, typename U = int>
-Ratio<U> convertToRatio(const T &x, unsigned int nb_iter) {
+Ratio<U> convertToRatio(const T &x, unsigned int nbIter) {
 
-    std::cout << "x = " << x << std::endl;
-
-    //constexpr T ONE = static_cast<T>(1);
     constexpr T ZERO = static_cast<T>(0);
+    constexpr T ONE = static_cast<T>(1);
 
     if (x < ZERO){ 
-        std::cout << "inf 0" << std::endl;
-        return -convertToRatio(-x, nb_iter);
+        return -convertToRatio(-x, nbIter);
     }
 
-    if (x == ZERO) {
-        std::cout << "==0" << std::endl;
+    if (x < static_cast<T>(0.01)) {
         return Ratio<U>();
     }
 
-    if (nb_iter == 0){
-        std::cout << "nbiter" << std::endl;
+    if (nbIter == 0){
         return Ratio<U>();
     }
 
-    if (x < static_cast<T>(1)) {
-        std::cout << "x < 1" << std::endl;
-        return convertToRatio(static_cast<T>(1) / static_cast<T>(x), nb_iter).inverse();
+    if (x < ONE) {
+        return convertToRatio(ONE / static_cast<T>(x), nbIter).inverse();
     }
 
     U q = static_cast<U>(x);
-    std::cout << "q = " << q << std::endl;
-    std::cout << "x - q = " << x - q << std::endl;
-    return Ratio<U>(q, static_cast<T>(1)) + convertToRatio(x - q, nb_iter - 1);
+    return Ratio<U>(q, ONE) + convertToRatio(x - q, nbIter - 1);
 }
 
 
@@ -421,44 +368,5 @@ Ratio<T> subtraction(const Ratio<T> &ratio, const Args ... args) {
 
 
 
-/*
-template<typename T, typename U = int>
-Ratio<U> convertToRatio(const T &x, unsigned int nb_iter) {
-    std::cout << x << std::endl;
 
-    constexpr T ONE = static_cast<T>(1);
-    constexpr T ZERO = static_cast<T>(0);
-
-    if (x < static_cast<T>(0)){ // static_cast<T>(0) a la place de 0?
-        std::cout << "inf 0" << std::endl;
-        return -convertToRatio<U>(-x, nb_iter);
-    }
-
-    if (x == static_cast<T>(0)) {
-        std::cout << "==0" << std::endl;
-        return Ratio<U>();
-    }
-
-    if (nb_iter == 0){
-        std::cout << "nbiter" << std::endl;
-        return Ratio<U>();
-    }
-
-    if (x < static_cast<T>(1)) {
-        //return Ratio<U>(static_cast<U>(1), static_cast<U>(1))/convertToRatio<U>(1/x, nb_iter);
-        //return Ratio<U>(static_cast<U>(1), convertToRatio<U>(1/x, nb_iter));
-        std::cout << "ici" << std::endl;
-        std::cout << static_cast<T>(1)/static_cast<T>(x) << std::endl;
-
-        //return Ratio<U>(static_cast<U>(1), static_cast<U>(1))/convertToRatio<U>(static_cast<T>(1)/static_cast<T>(x), nb_iter);
-        return convertToRatio<U>(ONE / static_cast<T>(x), nb_iter).inverse2();
-    }
-
-    if (x >= static_cast<T>(1)) {
-        int q = (int)x;
-        std::cout << "derniere" << std::endl;
-        std::cout << x << std::endl;
-        std::cout << "q = " << q << std::endl;
-        return Ratio<U>(q, static_cast<U>(1)) + convertToRatio<T>(static_cast<T>(x - q), nb_iter - 1);
-    }
-}*/
+//assert(d != 0 && "denominator should not be zero"); //exception mieux

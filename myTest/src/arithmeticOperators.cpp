@@ -59,13 +59,13 @@ TEST (RatioArithmetic, value_multiply) {
     ASSERT_EQ (result.getDenominator(), 3);
 }
 
-// TEST (RatioArithmetic, modulo) {
-//     Ratio ratio1(4, 3);
-//     Ratio ratio2(5, 2);
-//     Ratio result = ratio1 % ratio2;
-//     ASSERT_EQ (result.getNumerator(), 0);
-//     ASSERT_EQ (result.getDenominator(), 1);
-// }
+TEST (RatioArithmetic, modulo) {
+    Ratio ratio1(5, 2);
+    Ratio ratio2(4, 3);
+    Ratio result = ratio1 % ratio2;
+    ASSERT_EQ (result.getNumerator(), 7);
+    ASSERT_EQ (result.getDenominator(), 1);
+}
 
 TEST (RatioArithmetic, increment) {
     Ratio ratio(2, 3);

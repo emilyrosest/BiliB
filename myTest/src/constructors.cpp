@@ -10,13 +10,11 @@ TEST (RatioConstructor, defaultContructor) {
     EXPECT_EQ (ratio.getDenominator(), 1);
 }
 
-
 TEST (RatioConstructor, intergersConstructor) {
     Ratio ratio(9, 5);
     ASSERT_EQ (ratio.getNumerator(), 9);
     ASSERT_EQ (ratio.getDenominator(), 5);
 }
-
 
 TEST (RatioConstructor, copyConstructor) {
     Ratio ratio1(6, 7);
@@ -25,14 +23,11 @@ TEST (RatioConstructor, copyConstructor) {
     ASSERT_EQ (ratio2.getDenominator(), 7);
 }
 
-
-// TEST (RatioConstructor, doubleConstructor) {
-//     Ratio ratio(-4.5);
-//     ASSERT_EQ (ratio.getNumerator(), -9);
-//     ASSERT_EQ (ratio.getDenominator(), 2);
-// }
-
-
+TEST (RatioConstructor, doubleConstructor) {
+    Ratio ratio(-4.5);
+    ASSERT_EQ (ratio.getNumerator(), -9);
+    ASSERT_EQ (ratio.getDenominator(), 2);
+}
 
 
 
