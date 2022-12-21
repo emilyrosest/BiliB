@@ -42,3 +42,11 @@ TEST (RatioOperators, divideAssignment) {
     ASSERT_EQ (ratio1.getNumerator(), 5);
     ASSERT_EQ (ratio1.getDenominator(), 6);
 }
+
+TEST (RatioOperators, moduloAssignment) {
+    Ratio ratio1(5, 7);
+    Ratio ratio2(6, 4);
+    ratio1 %= ratio2;
+    ASSERT_EQ (ratio1.getNumerator(), 10);
+    ASSERT_EQ (ratio1.getDenominator(), 1);
+}

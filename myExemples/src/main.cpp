@@ -53,8 +53,10 @@ int main()
     // Ratio ratio3(7, 3);
     // std::cout << product<int>(ratio1, ratio2, ratio3) << std::endl;
 
-    Ratio ratio(8, 15);
-    std::cout << ratio.remainder() << std::endl;
+    // Ratio ratio(8, 15);
+    // std::cout << ratio.remainder() << std::endl;
+
+    
 
 
 

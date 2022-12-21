@@ -8,9 +8,6 @@
 static unsigned int nbIter = 10;
 
 
-// #ifdef __LIBRATIO__HPP
-// #define __LIBRATIO__HPP
-
 // Doxygen menu
 /// \version 0.1
 /// \mainpage
@@ -107,67 +104,75 @@ class Ratio {
 
         /// @brief inverse the ratio
         /// @return the inversed ratio
-        Ratio<T> inverse() {
-            return Ratio<T>(m_d, m_n);
-        }
+        inline Ratio<T> inverse() { return Ratio<T>(m_d, m_n);};
 
         /// @brief devides the numerator by the denominator
         /// @return the remainder
-        T remainder() {
-            return m_n % m_d;
-        }
+        inline T remainder() { return m_n % m_d;};
 
         /// @brief the absolute value of a ratio
         /// @return the absolute value
-        Ratio absolute() {
-            return (m_n < static_cast<T>(0)) ? -*this : *this;
-        }
+        inline Ratio<T> absolute() { return (m_n < static_cast<T>(0)) ? -*this : *this;};
 
         /// @brief the integer part of a ratio
         /// @return the integer part
-        T floor() {
-            return static_cast<T>(m_n / m_d);
-        }
+        inline T floor() { return static_cast<T>(m_n / m_d);};
 
         /// @brief convert ratio to number
         /// @tparam U : the type of the number wanted
         /// @return the number
         template <typename U = float>
-        U convertToNumber() const{
-            return static_cast<U>(m_n) / static_cast<U>(m_d);
-        }
+        inline U convertToNumber() const{ return static_cast<U>(m_n) / static_cast<U>(m_d);}
 
 
         //////////////////////////////// ARITHMETIC OPERATORS
 
         /// @brief add 2 ratio
-        /// @param r ratio to add to the calling ratio
+        /// @param r : ratio to add to the calling ratio
         /// @return the sum of the current ratio and the argument ratio
-        inline Ratio operator+(const Ratio &r) const { return Ratio(m_n * r.m_d + m_d * r.m_n, m_d * r.m_d);};
+        inline Ratio<T> operator+(const Ratio &r) const { return Ratio(m_n * r.m_d + m_d * r.m_n, m_d * r.m_d);};
 
-        //ratio + autre type, ratio+ratio , ratio+T, T+ratio
+        /// @brief add a ratio and a number
+        /// @tparam U : the type of the number
+        /// @param value : the value to add to the ratio
+        /// @return the sum of the current ratio and the argument number
+        template <typename U>
+        Ratio<T> operator+(const U &value) const { 
+            Ratio ratioValue = convertToRatio<U>(value, nbIter);
+            return *this + ratioValue;
+        }
 
         /// @brief subtract a ratio to the current ratio
-        /// @param r ratio to subtract to the calling ratio
+        /// @param r : ratio to subtract to the calling ratio
         /// @return the subtraction of the current ratio and the argument ratio
         inline Ratio operator-(const Ratio &r) const { return Ratio(m_n * r.m_d - m_d * r.m_n, m_d * r.m_d);};
+
+        /// @brief subtract a number to the current ratio
+        /// @tparam U : the type of the number
+        /// @param value : the value to subtract to the ratio
+        /// @return the subtraction of the current ratio and the argument number
+        template <typename U>
+        Ratio<T> operator-(const U &value) const { 
+            Ratio ratioValue = convertToRatio<U>(value, nbIter);
+            return *this - ratioValue;
+        } //ici
 
         /// @brief invert the ratio's sign
         /// @return the inverted ratio
         inline Ratio operator-() const { return Ratio(-m_n, m_d);};
 
         /// @brief divide the ratio by another ratio
-        /// @param r the denominator of the division
+        /// @param r : the denominator of the division
         /// @return the division of the current ratio and the argument ratio
         inline Ratio operator/(const Ratio &r) const { return Ratio(m_n * r.m_d, m_d * r.m_n);};
 
         /// @brief multiply the ratio by another ratio
-        /// @param r the ratio used to multiply
+        /// @param r : the ratio used to multiply
         /// @return the multiplication of the current ratio and the argument ratio
         inline Ratio operator*(const Ratio &r) const { return Ratio(m_n * r.m_n, m_d * r.m_d);};
 
         /// @brief multiply the ratio by a value
-        /// @param value the value to multiply the ratio
+        /// @param value : the value to multiply the ratio
         /// @return the multiplication of the current ratio and the given value
         inline Ratio operator*(const T &value) const { return Ratio(m_n * value, m_d);};
 
@@ -193,7 +198,7 @@ class Ratio {
         //////////////////////////////// ASSIGNMENT OPERATORS
 
         /// @brief assign a ratio to another
-        /// @param r the ratio to assign
+        /// @param r : the ratio to assign
         /// @return the ratio assigned
         Ratio operator=(const Ratio &r) {
             if (&r == this) return *this;
@@ -204,88 +209,63 @@ class Ratio {
 
         /// @brief add a ratio to the curent ratio
         /// @param r : the ratio to add
-        void operator+=(const Ratio &r) { //mettre en ratio
-            //setRatio(m_n * r.m_d + r.m_n * m_d, m_d * r.m_d);
-            *this = *this + r; //return le ratio??
-        }
+        inline void operator+=(const Ratio &r) { *this = *this + r;}; //return un ratio?
 
         /// @brief subtract a ratio to the curent ratio
         /// @param r : the ratio to subtract
-        void operator-=(const Ratio &r) {
-            *this = *this - r;
-        }
+        inline void operator-=(const Ratio &r) { *this = *this - r;};
 
         /// @brief multiply a ratio to the curent ratio
         /// @param r : the ratio to multiply
-        void operator*=(const Ratio &r) {
-            *this = *this * r;
-        }
+        inline void operator*=(const Ratio &r) { *this = *this * r;};
 
         /// @brief divide a ratio to the curent ratio
         /// @param r : the ratio to divide
-        void operator/=(const Ratio &r) {
-            *this = *this / r;
-        }
+        inline void operator/=(const Ratio &r) { *this = *this / r;};
 
-        // void operator%=(const Ratio &r) {
-        //     *this = *this % r;
-        // }
+        /// @brief assign the remainder of the current ratio and a ratio to the current ratio
+        /// @param r : the ratio to divide to the current ratio to get the remainder
+        inline void operator%=(const Ratio &r) { *this = *this % r;};
+
 
         //////////////////////////////// RELATIONAL OPERATORS
 
         /// @brief comparison of 2 ratio
-        /// @param r the compared ratio
+        /// @param r : the compared ratio
         /// @return true if the 2 ratio are equal, false if not
-        bool operator==(const Ratio &r) const {
-            return (m_n == r.m_n && m_d == r.m_d);
-        }
+        inline bool operator==(const Ratio &r) const { return (m_n == r.m_n && m_d == r.m_d);};
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the 2 ratio are not equal
-        bool operator!=(const Ratio &r) const {
-            return (m_n != r.m_n || m_d != r.m_d);
-        }
+        inline bool operator!=(const Ratio &r) const { return (m_n != r.m_n || m_d != r.m_d);};
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is greater than the given ratio
-        bool operator>(const Ratio &r) const {
-            return (m_n * r.m_d > r.m_n * m_d);
-        }
+        inline bool operator>(const Ratio &r) const { return (m_n * r.m_d > r.m_n * m_d);};
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is less than the given ratio
-        bool operator<(const Ratio &r) const {
-            return (m_n * r.m_d < r.m_n * m_d);
-        }
+        inline bool operator<(const Ratio &r) const { return (m_n * r.m_d < r.m_n * m_d);};
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is greater than or equal to the given ratio
-        bool operator>=(const Ratio &r) const {
-            return (m_n * r.m_d >= r.m_n * m_d);
-        }
+        inline bool operator>=(const Ratio &r) const { return (m_n * r.m_d >= r.m_n * m_d);};
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is less than or equal to the given ratio
-        bool operator<=(const Ratio &r) const {
-            return (m_n * r.m_d <= r.m_n * m_d);
-        }
-
-        
-
-        
-
+        inline bool operator<=(const Ratio &r) const { return (m_n * r.m_d <= r.m_n * m_d);};
 
 };
 
 /// @brief overload the operator << for Ratio
 /// @tparam T the type of the ratio
-/// @param stream input stream
-/// @param ratio the ratio to output
+/// @param stream : input stream
+/// @param ratio : the ratio to output
 /// @return the output stream containing the ratio
 template <typename T>
 std::ostream& operator<< (std::ostream& stream, Ratio<T> ratio) {
@@ -327,6 +307,18 @@ Ratio<U> convertToRatio(const T &x, unsigned int nbIter) {
 }
 
 
+/// @brief add a ratio and a number
+/// @tparam U : the type of the number
+/// @tparam T : the type of the ratio
+/// @param value : the value to add to the ratio
+/// @param r : the ratio
+/// @return the sum of the ratio and the number
+template <typename T, typename U>
+Ratio<T> operator+(const U &value, const Ratio<T> &r) { 
+    Ratio ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue + r;
+}
+
 template <typename T, typename U>
 Ratio<T> operator*(const U value, const Ratio<T> &r) {
     return r * value;
@@ -362,11 +354,3 @@ Ratio<T> subtraction(const Ratio<T> &ratio, const Args ... args) {
     return ratio - subtraction(args...);
 }
 
-
-
-// #endif
-
-
-
-
-//assert(d != 0 && "denominator should not be zero"); //exception mieux
