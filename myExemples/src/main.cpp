@@ -56,8 +56,16 @@ int main()
     // Ratio ratio(8, 15);
     // std::cout << ratio.remainder() << std::endl;
 
+    double value = 2.;
+    //Ratio ratio(6, 3); 
+    Ratio ratioValue = convertToRatio<float>(value, nbIter);
+    //Ratio result = value / ratio;
+    // Ratio ratio2(3, 5);
+    // float value2 = 3.2;
+    // Ratio ratioValue2 = convertToRatio(value2, nbIter);
+    // Ratio result2 = ratioValue2 - ratio2;
     
-
+    std::cout << ratioValue << std::endl;
 
 
     return 0;

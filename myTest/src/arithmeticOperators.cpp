@@ -75,13 +75,13 @@ TEST (RatioArithmetic, divideValue) {
     ASSERT_EQ (result.getDenominator(), 4);
 }
 
-// TEST (RatioArithmetic, valueDivide) {
-//     int value = 2;
-//     Ratio ratio(6, 3); 
-//     Ratio result = value / ratio;
-//     ASSERT_EQ (result.getNumerator(), 1);
-//     ASSERT_EQ (result.getDenominator(), 1);
-// }
+TEST (RatioArithmetic, valueDivide) {
+    float value = 2.;
+    Ratio ratio(6, 3); 
+    Ratio result = value / ratio;
+    ASSERT_EQ (result.getNumerator(), 1);
+    ASSERT_EQ (result.getDenominator(), 1);
+}
 
 TEST (RatioArithmetic, multiply) {
     Ratio ratio1(6, 3); 

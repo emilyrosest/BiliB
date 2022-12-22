@@ -173,6 +173,7 @@ class Ratio {
         template <typename U>
         Ratio<T> operator/(const U &value) const { 
             Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            if (ratioValue == Ratio()) throw std::string("denominator should not be zero");
             return *this / ratioValue;
         }
 
@@ -246,30 +247,66 @@ class Ratio {
         /// @return true if the 2 ratio are equal, false if not
         inline bool operator==(const Ratio &r) const { return (m_n == r.m_n && m_d == r.m_d);};
 
+        template <typename U>
+        bool operator==(const U &value) const {
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            return *this == ratioValue;
+        }
+
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the 2 ratio are not equal
         inline bool operator!=(const Ratio &r) const { return (m_n != r.m_n || m_d != r.m_d);};
+
+        template <typename U>
+        bool operator!=(const U &value) const {
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            return *this != ratioValue;
+        }
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is greater than the given ratio
         inline bool operator>(const Ratio &r) const { return (m_n * r.m_d > r.m_n * m_d);};
 
+        template <typename U>
+        bool operator>(const U &value) const {
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            return *this > ratioValue;
+        }
+
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is less than the given ratio
         inline bool operator<(const Ratio &r) const { return (m_n * r.m_d < r.m_n * m_d);};
+
+        template <typename U>
+        bool operator<(const U &value) const {
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            return *this < ratioValue;
+        }
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is greater than or equal to the given ratio
         inline bool operator>=(const Ratio &r) const { return (m_n * r.m_d >= r.m_n * m_d);};
 
+        template <typename U>
+        bool operator>=(const U &value) const {
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            return *this >= ratioValue;
+        }
+
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is less than or equal to the given ratio
         inline bool operator<=(const Ratio &r) const { return (m_n * r.m_d <= r.m_n * m_d);};
+
+        template <typename U>
+        bool operator<=(const U &value) const {
+            Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+            return *this <= ratioValue;
+        }
 
 };
 
@@ -342,16 +379,16 @@ Ratio<T> operator-(const U &value, const Ratio<T> &r) {
     return ratioValue - r;
 }
 
-// /// @brief divide a ratio by a number
-// /// @tparam U : the type of the number
-// /// @param value : the value to divide to the ratio
-// /// @return the division of the current ratio by the argument number
-// template <typename T, typename U>
-// Ratio<T> operator/(const U &value, const Ratio<T> &r) { 
-//     Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
-//     //return ratioValue / r;
-//     //return Ratio<T>(ratioValue.getNumerator() * r.getDenominator(), ratioValue.getDenominator() * r.getNumerator());
-// } //marche pas
+/// @brief divide a ratio by a number
+/// @tparam U : the type of the number
+/// @param value : the value to divide to the ratio
+/// @return the division of the current ratio by the argument number
+template <typename T, typename U>
+Ratio<T> operator/(const U &value, const Ratio<T> &r) { 
+    Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+    if (r == Ratio()) throw std::string("denominator should not be zero");
+    return ratioValue / r;
+} 
 
 /// @brief multiply a value by a ratio
 /// @tparam T : the type of the ratio
@@ -362,6 +399,42 @@ Ratio<T> operator-(const U &value, const Ratio<T> &r) {
 template <typename T, typename U>
 Ratio<T> operator*(const U &value, const Ratio<T> &r) {
     return r * value;
+}
+
+template <typename T, typename U>
+bool operator==(const U &value, const Ratio<T> &r) {
+    Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue == r;
+}
+
+template <typename T, typename U>
+bool operator!=(const U &value, const Ratio<T> &r) {
+    Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue != r;
+}
+
+template <typename T, typename U>
+bool operator>(const U &value, const Ratio<T> &r) {
+    Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue > r;
+}
+
+template <typename T, typename U>
+bool operator<(const U &value, const Ratio<T> &r) {
+    Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue < r;
+}
+
+template <typename T, typename U>
+bool operator>=(const U &value, const Ratio<T> &r) {
+    Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue >= r;
+}
+
+template <typename T, typename U>
+bool operator<=(const U &value, const Ratio<T> &r) {
+    Ratio<T> ratioValue = convertToRatio<U>(value, nbIter);
+    return ratioValue <= r;
 }
 
 
