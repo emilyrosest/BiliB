@@ -40,6 +40,11 @@ TEST (RatioFunctions, floor) {
     ASSERT_EQ (ratio.floor(), 7);
 }
 
+TEST (RatioFunctions, cos) {
+    Ratio ratio (0, 1);
+    ASSERT_EQ (ratio.cos(), 1);
+}
+
 TEST (RatioFunction, convertToRatio) {
     Ratio ratio = convertToRatio<float>(3.2, nbIter);
     EXPECT_EQ (ratio.getNumerator(), 16);

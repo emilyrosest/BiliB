@@ -3,6 +3,7 @@
 #include <fstream>
 #include <numeric>
 #include <cassert>
+#include <math.h>
 
 
 static unsigned int nbIter = 10;
@@ -123,6 +124,11 @@ class Ratio {
         /// @return the number
         template <typename U = float>
         inline U convertToNumber() const{ return static_cast<U>(m_n) / static_cast<U>(m_d);}
+
+        /// @brief cosinus function
+        /// @return the cosinus of the ratio number
+        template <typename U = float>
+        inline Ratio<T> cos() {return convertToRatio<U>(cos(*this.convertToNumber()), nbIter);}
 
 
         //////////////////////////////// ARITHMETIC OPERATORS
