@@ -4,6 +4,10 @@
 #include "Ratio.hpp"
 
 
+
+
+
+
 TEST (RatioArithmetic, plusRatio) {
     Ratio ratio1(5, 3);
     Ratio ratio2(8, 6);
@@ -14,10 +18,10 @@ TEST (RatioArithmetic, plusRatio) {
 
 TEST (RatioArithmetic, plusValue) {
     Ratio ratio(5, 3);
-    double value = 1.75;
+    float value = 2.;
     Ratio result = ratio + value;
-    ASSERT_EQ (result.getNumerator(), 41);
-    ASSERT_EQ (result.getDenominator(), 12);
+    ASSERT_EQ (result.getNumerator(), 11);
+    ASSERT_EQ (result.getDenominator(), 3);
 }
 
 TEST (RatioArithmetic, valuePlus) {

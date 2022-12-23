@@ -56,16 +56,56 @@ int main()
     // Ratio ratio(8, 15);
     // std::cout << ratio.remainder() << std::endl;
 
-    double value = 2.;
-    //Ratio ratio(6, 3); 
+    int value = 2;
     Ratio ratioValue = convertToRatio<float>(value, nbIter);
+
+    std::cout << ratioValue << std::endl;
+
+    Ratio<float> ratio(7, 1);
+
+    //Ratio ratio2 = ratio + ratioValue;
+    //Ratio ratio3 = ratio + value;
+    //Ratio ratio4 = ratio + convertToRatio<int>(value, nbIter);
+    //Ratio ratio5 = ratio + 2;
+    //Ratio ratio6 = ratio + Ratio(4, 2);
+
+
+    //std::cout << ratio2 << std::endl;
+    //std::cout << ratio3 << std::endl;
+    //std::cout << ratio4 << std::endl;
+    //std::cout << ratio5 << std::endl;
+    //std::cout << ratio6 << std::endl;
+
+    // try {
+    //     // Ratio ratio2 = ratio + ratioValue;
+    //     // Ratio<int> ratio3 = ratio + value;
+    //     // Ratio ratio4 = ratio + convertToRatio<float>(value, nbIter);
+    //     // //Ratio ratio5 = ratio + 2;
+    //     // Ratio ratio6 = ratio + Ratio(4, 0);
+
+
+    //     // std::cout << ratio2 << std::endl;
+    //     // std::cout << ratio3 << std::endl;
+    //     // std::cout << ratio4 << std::endl;
+    //     // //std::cout << ratio5 << std::endl;
+    //     // std::cout << ratio6 << std::endl;
+
+    //     Ratio zero(4, 0);
+    //     std::cout << zero << std::endl;
+
+    // } catch(std::exception &e) {
+    //     std::cout << e.what() << std::endl;
+    // }
+    
+
+
     //Ratio result = value / ratio;
     // Ratio ratio2(3, 5);
     // float value2 = 3.2;
     // Ratio ratioValue2 = convertToRatio(value2, nbIter);
     // Ratio result2 = ratioValue2 - ratio2;
     
-    std::cout << ratioValue << std::endl;
+    
 
 
     return 0;

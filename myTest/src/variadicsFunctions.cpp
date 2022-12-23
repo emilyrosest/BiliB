@@ -30,3 +30,21 @@ TEST (RatioVariadic, subtraction) {
     ASSERT_EQ (result.getNumerator(), -31);
     ASSERT_EQ (result.getDenominator(), 6);
 }
+
+TEST (RatioVariadic, min) {
+    Ratio ratio1(7, 4);
+    Ratio ratio2(9.);
+    Ratio ratio3(1, 3);
+    Ratio ratio4(99, 5);
+    Ratio ratio5(-7, 4);
+    ASSERT_EQ (min(ratio1, ratio2, ratio3, ratio4, ratio5), ratio5);
+}
+
+TEST (RatioVariadic, max) {
+    Ratio ratio1(4, 4);
+    Ratio ratio2(-487, -400);
+    Ratio ratio3(7, -3);
+    Ratio ratio4(7.);
+    Ratio ratio5(-8, 5);
+    ASSERT_EQ (max(ratio1, ratio2, ratio3, ratio4, ratio5), ratio4);
+}
