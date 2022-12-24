@@ -6,10 +6,10 @@
 
 int main()
 {
-    Ratio myRatio;
+    // Ratio myRatio;
 
-    int bidule = 0;
-    bidule++;
+    // int bidule = 0;
+    // bidule++;
 
 
     // std::cout << "salut a tous!!! " << std::endl << bidule << std::endl;
@@ -56,25 +56,25 @@ int main()
     // Ratio ratio(8, 15);
     // std::cout << ratio.remainder() << std::endl;
 
-    int value = 2;
-    Ratio ratioValue = convertToRatio<float>(value, nbIter);
+    float value = 2.;
+    Ratio<int> ratioValue = convertToRatio<float, int>(value, nbIter);
 
     std::cout << ratioValue << std::endl;
 
-    Ratio<float> ratio(7, 1);
+    Ratio<int> ratio(7, 1);
 
-    //Ratio ratio2 = ratio + ratioValue;
-    //Ratio ratio3 = ratio + value;
-    //Ratio ratio4 = ratio + convertToRatio<int>(value, nbIter);
-    //Ratio ratio5 = ratio + 2;
-    //Ratio ratio6 = ratio + Ratio(4, 2);
+    Ratio ratio2 = ratio + ratioValue;
+    Ratio ratio3 = ratio + value;
+    Ratio ratio4 = ratio + convertToRatio<int>(value, nbIter);
+    Ratio ratio5 = ratio + 2.;
+    Ratio ratio6 = ratio + Ratio(4, 2);
 
 
-    //std::cout << ratio2 << std::endl;
-    //std::cout << ratio3 << std::endl;
-    //std::cout << ratio4 << std::endl;
-    //std::cout << ratio5 << std::endl;
-    //std::cout << ratio6 << std::endl;
+    std::cout << ratio2 << std::endl;
+    std::cout << ratio3 << std::endl;
+    std::cout << ratio4 << std::endl;
+    std::cout << ratio5 << std::endl;
+    std::cout << ratio6 << std::endl;
 
     // try {
     //     // Ratio ratio2 = ratio + ratioValue;

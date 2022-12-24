@@ -18,7 +18,7 @@ TEST (RatioArithmetic, plusRatio) {
 
 TEST (RatioArithmetic, plusValue) {
     Ratio ratio(5, 3);
-    float value = 2.;
+    int value = 2;
     Ratio result = ratio + value;
     ASSERT_EQ (result.getNumerator(), 11);
     ASSERT_EQ (result.getDenominator(), 3);
@@ -54,6 +54,12 @@ TEST (RatioArithmetic, valueMinus) {
     Ratio result = value - ratio;
     ASSERT_EQ (result.getNumerator(), 13);
     ASSERT_EQ (result.getDenominator(), 5);
+
+    Ratio ratio2(3, 5);
+    int value2 = 3;
+    Ratio result2 = value2 - ratio2;
+    ASSERT_EQ (result2.getNumerator(), 12);
+    ASSERT_EQ (result2.getDenominator(), 5);
 }
 
 TEST (RatioArithmetic, unaryMinus) {
