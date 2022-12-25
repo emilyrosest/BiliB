@@ -56,25 +56,25 @@ int main()
     // Ratio ratio(8, 15);
     // std::cout << ratio.remainder() << std::endl;
 
-    float value = 2.;
-    Ratio<int> ratioValue = convertToRatio<float, int>(value, nbIter);
+    // float value = 2.;
+    // Ratio<int> ratioValue = convertToRatio<float, int>(value, nbIter);
 
-    std::cout << ratioValue << std::endl;
+    // std::cout << ratioValue << std::endl;
 
-    Ratio<int> ratio(7, 1);
+    // Ratio<int> ratio(7, 1);
 
-    Ratio ratio2 = ratio + ratioValue;
-    Ratio ratio3 = ratio + value;
-    Ratio ratio4 = ratio + convertToRatio<int>(value, nbIter);
-    Ratio ratio5 = ratio + 2.;
-    Ratio ratio6 = ratio + Ratio(4, 2);
+    // Ratio ratio2 = ratio + ratioValue;
+    // Ratio ratio3 = ratio + value;
+    // Ratio ratio4 = ratio + convertToRatio<int>(value, nbIter);
+    // Ratio ratio5 = ratio + 2.;
+    // Ratio ratio6 = ratio + Ratio(4, 2);
 
 
-    std::cout << ratio2 << std::endl;
-    std::cout << ratio3 << std::endl;
-    std::cout << ratio4 << std::endl;
-    std::cout << ratio5 << std::endl;
-    std::cout << ratio6 << std::endl;
+    // std::cout << ratio2 << std::endl;
+    // std::cout << ratio3 << std::endl;
+    // std::cout << ratio4 << std::endl;
+    // std::cout << ratio5 << std::endl;
+    // std::cout << ratio6 << std::endl;
 
     // try {
     //     // Ratio ratio2 = ratio + ratioValue;
@@ -104,8 +104,52 @@ int main()
     // float value2 = 3.2;
     // Ratio ratioValue2 = convertToRatio(value2, nbIter);
     // Ratio result2 = ratioValue2 - ratio2;
+
+    //////////////////// CONSTRUCTORS
     
-    
+    Ratio<int> myRatio0;
+    Ratio<int> myRatio1(78, 44);
+    Ratio<int> myRatio2(myRatio1);
+    Ratio<int> myRatio3(-15.25895);
+
+    std::cout << "myRatio0 = " << myRatio0 << std::endl;
+    std::cout << "myRatio1 = " << myRatio1 << std::endl;
+    std::cout << "myRatio2 = " << myRatio2 << std::endl << std::endl;
+
+    //////////////////// GETTERS AND SETTERS
+
+    myRatio2.setNumerator(48);
+    std::cout << "myRatio2 = " << myRatio2 << std::endl;
+    std::cout << "myRatio3 = " << myRatio3.getNumerator() << "/" << myRatio3.getDenominator() << std::endl << std::endl;
+
+    //////////////////// FUNCTIONS
+
+    std::cout << "1/myRatio1 = " << myRatio1.inverse() << std::endl;
+    std::cout << "42 = " << Ratio(42, 5).remainder() << " [5]" << std::endl;
+    std::cout << "|myRatio3| = " << myRatio3.absolute() << std::endl;
+    std::cout << "myRatio3 integer part = " << myRatio3.floor() << std::endl;
+    std::cout << myRatio2 << " = " << myRatio2.convertToNumber<float>() << std::endl;
+    std::cout << "12.56 = " << convertToRatio<double, int>(12.56, nbIter) << std::endl << std::endl;
+
+    //////////////////// ARITHMETIC OPERATORS
+
+    Ratio myRatio4 = myRatio1 + myRatio2;
+    Ratio myRatio5 = myRatio4 - 6.123;
+    Ratio myRatio6 = - myRatio5;
+    Ratio myRatio7 = 23 / myRatio6;
+    Ratio myRatio8 = myRatio7 * -0.21;
+    Ratio myRatio9 = myRatio8 % myRatio7;
+    ++myRatio9;
+
+    std::cout << "myRatio4 = " << myRatio4 << std::endl;
+    std::cout << "myRatio5 = " << myRatio5 << std::endl;
+    std::cout << "myRatio6 = " << myRatio6 << std::endl;
+    std::cout << "myRatio7 = " << myRatio7 << std::endl;
+    std::cout << "myRatio8 = " << myRatio8 << std::endl;
+    std::cout << "myRatio9 = " << myRatio9 << std::endl << std::endl;
+
+
+
 
 
     return 0;

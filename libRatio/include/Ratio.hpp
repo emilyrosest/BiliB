@@ -29,10 +29,8 @@ static unsigned int nbIter = 10;
 ///     - [path to build]/doc/doc-doxygen/html/index.html or 
 ///     - or [path to build]/INTERFACE/doc/doc-doxygen/html/index.html
 
-
 /// \class Ratio
 /// \brief class defining a number written as a ratio between two integers
-
 
 
 template <class T = int>
@@ -44,6 +42,7 @@ class Ratio {
         T m_d;
 
     public:
+        //////////////////////////////// CONSTRUCTORS AND DESTRUCTOR
 
         /// \brief default constructor (denominator = 0; numerator = 1)
         constexpr Ratio() : m_n(0), m_d(1) {}
@@ -66,7 +65,6 @@ class Ratio {
         /// @tparam U : the type of the given number
         /// @param x : the number to convert into a ratio number
         template <typename U>
-        //constexpr Ratio(const U &x) : m_n(convertToRatio<U>(x, nbIter).getNumerator()), m_d(convertToRatio<U>(x, nbIter).getDenominator()) {}
         constexpr Ratio(const U &x) {
             Ratio<T> ratio = convertToRatio<U, T>(x, nbIter);
             if (ratio.m_d == static_cast<T>(0)) throw std::domain_error("denominator should not be zero");
@@ -77,6 +75,7 @@ class Ratio {
         /// \brief destructor
         ~Ratio() = default;
 
+        //////////////////////////////// FUNCTIONS
 
         /// @brief get the numerator of a ratio number
         /// @return the numerator
