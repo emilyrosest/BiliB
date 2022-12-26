@@ -4,6 +4,8 @@
 
 #include "Ratio.hpp"
 
+/////////////////// ==
+
 TEST (RatioOperators, EqualOperator) {
     Ratio ratio1(8, 5);
     Ratio ratio2(16, 10);
@@ -22,6 +24,8 @@ TEST (RatioOperators, valueEqual) {
     ASSERT_EQ (value == ratio, false);
 }
 
+/////////////////// !=
+
 TEST (RatioOperators, notEqualOperator) {
     Ratio ratio1(8, 5);
     Ratio ratio2(18, 10);
@@ -39,6 +43,8 @@ TEST (RatioOperators, valueNotEqual) {
     Ratio ratio(8, 5);
     ASSERT_EQ (value != ratio, false);
 }
+
+/////////////////// >
 
 TEST (RatioOperators, greaterOperator) {
     Ratio ratio1(7, 4);
@@ -59,6 +65,8 @@ TEST (RatioOperators, valueGreater) {
     ASSERT_EQ (value > ratio, true);
 }
 
+/////////////////// <
+
 TEST (RatioOperators, lessOperator) {
     Ratio ratio1(1, 3);
     Ratio ratio2(4, 5);
@@ -78,6 +86,8 @@ TEST (RatioOperators, valueLess) {
     ASSERT_EQ (value < ratio, true);
 }
 
+/////////////////// >=
+
 TEST (RatioOperators, greaterOrEqual) {
     Ratio ratio1(7, 4);
     Ratio ratio2(14, 8);
@@ -96,6 +106,8 @@ TEST (RatioOperators, valueGreaterOrEqual) {
     Ratio ratio(5, 2);
     ASSERT_EQ (value >= ratio, true);
 }
+
+/////////////////// <=
 
 TEST (RatioOperators, lessOrEqual) {
     Ratio ratio1(1, 4);

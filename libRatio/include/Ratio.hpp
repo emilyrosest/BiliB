@@ -263,57 +263,83 @@ class Ratio {
         /// @param r : the ratio to divide to the current ratio to get the remainder
         inline constexpr void operator%=(const Ratio<T> &r) { *this = *this % r;};
 
+        /// @brief assign the remainder of the current ratio and a value to the current ratio
+        /// @tparam U : the type of the value
+        /// @param value : the value to divide to the current ratio to get the remainder
         template <typename U>
         inline constexpr void operator%=(const U &value) { *this %= convertToRatio<U, T>(value, nbIter);}
-
 
         //////////////////////////////// RELATIONAL OPERATORS
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the 2 ratio are equal, false if not
-        inline constexpr bool operator==(const Ratio &r) const { return (m_n == r.m_n && m_d == r.m_d);};
+        inline constexpr bool operator==(const Ratio<T> &r) const { return (m_n == r.m_n && m_d == r.m_d);};
 
+        /// @brief comparision of a ratio and a value
+        /// @tparam U : the type of the value
+        /// @param value : the compared value
+        /// @return true if the ratio and the value are equal
         template <typename U>
         inline constexpr bool operator==(const U &value) const { return *this == convertToRatio<U, T>(value, nbIter);}
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the 2 ratio are not equal
-        inline constexpr bool operator!=(const Ratio &r) const { return (m_n != r.m_n || m_d != r.m_d);};
+        inline constexpr bool operator!=(const Ratio<T> &r) const { return (m_n != r.m_n || m_d != r.m_d);};
 
+        /// @brief comparision of a ratio and a value
+        /// @tparam U : the type of the value
+        /// @param value : the compared value
+        /// @return true if the ratio and the value are not equal
         template <typename U>
         inline constexpr bool operator!=(const U &value) const { return *this != convertToRatio<U, T>(value, nbIter);}
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is greater than the given ratio
-        inline constexpr bool operator>(const Ratio &r) const { return (m_n * r.m_d > r.m_n * m_d);};
+        inline constexpr bool operator>(const Ratio<T> &r) const { return (m_n * r.m_d > r.m_n * m_d);};
 
+        /// @brief comparision of a ratio and a value
+        /// @tparam U : the type of the value
+        /// @param value : the compared value
+        /// @return true if the current ratio is greater than the value
         template <typename U>
         inline constexpr bool operator>(const U &value) const { return *this > convertToRatio<U, T>(value, nbIter);}
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is less than the given ratio
-        inline constexpr bool operator<(const Ratio &r) const { return (m_n * r.m_d < r.m_n * m_d);};
+        inline constexpr bool operator<(const Ratio<T> &r) const { return (m_n * r.m_d < r.m_n * m_d);};
 
+        /// @brief comparision of a ratio and a value
+        /// @tparam U : the type of the value
+        /// @param value : the compared value
+        /// @return true if the current ratio is less than the value
         template <typename U>
         inline constexpr bool operator<(const U &value) const { return *this < convertToRatio<U, T>(value, nbIter);}
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is greater than or equal to the given ratio
-        inline constexpr bool operator>=(const Ratio &r) const { return (m_n * r.m_d >= r.m_n * m_d);};
+        inline constexpr bool operator>=(const Ratio<T> &r) const { return (m_n * r.m_d >= r.m_n * m_d);};
 
+        /// @brief comparision of a ratio and a value
+        /// @tparam U : the type of the value
+        /// @param value : the compared value
+        /// @return true if the current ratio is greater than or equal to the value
         template <typename U>
         inline constexpr bool operator>=(const U &value) const { return *this >= convertToRatio<U, T>(value, nbIter);}
 
         /// @brief comparison of 2 ratio
         /// @param r : the compared ratio
         /// @return true if the current ratio is less than or equal to the given ratio
-        inline constexpr bool operator<=(const Ratio &r) const { return (m_n * r.m_d <= r.m_n * m_d);};
+        inline constexpr bool operator<=(const Ratio<T> &r) const { return (m_n * r.m_d <= r.m_n * m_d);};
 
+        /// @brief comparision of a ratio and a value
+        /// @tparam U : the type of the value
+        /// @param value : the compared value
+        /// @return true if the current ratio is less than or equal to the value
         template <typename U>
         inline constexpr bool operator<=(const U &value) const { return *this <= convertToRatio<U, T>(value, nbIter);}
 
@@ -402,74 +428,166 @@ inline constexpr Ratio<T> operator*(const U &value, const Ratio<T> &r) { return 
 // template <typename T, typename U>
 // inline constexpr U operator=(U &value, const Ratio<T> &r) { value = r.convertToNumber(); return value;}
 
-
+/// @brief add a ratio to the value
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to add the ratio to
+/// @param r : the ratio to add to the value
 template <typename T, typename U>
 inline constexpr void operator+=(U &value, const Ratio<T> &r) { value = value + r.convertToNumber();}
 
+/// @brief subtract a ratio to the value
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to subtract the ratio to
+/// @param r : the ratio to subtract to the value
 template <typename T, typename U>
 inline constexpr void operator-=(U &value, const Ratio<T> &r) { value = value - r.convertToNumber();}
 
+/// @brief multiply a ratio to the value
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to multiply the ratio to
+/// @param r : the ratio to multiply to the value
 template <typename T, typename U>
 inline constexpr void operator*=(U &value, const Ratio<T> &r) { value = value * r.convertToNumber();}
 
+/// @brief divide a ratio to the value
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to divide the ratio to
+/// @param r : the ratio to divide to the value
 template <typename T, typename U>
 inline constexpr void operator/=(U &value, const Ratio<T> &r) { value = value / r.convertToNumber();}
 
+/// @brief assign the remainder of the value and the ratio to the value
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to divide the ratio to 
+/// @param r : the ratio to divide to the value to get the remainder
 template <typename T, typename U>
 inline constexpr void operator%=(U &value, const Ratio<T> &r) { value = value % static_cast<T>(r.convertToNumber());}
 
+//////////////////////////////// RELATIONAL OPERATORS
 
-
-
+/// @brief comparision of a value and a ratio
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to compare
+/// @param r : the compared ratio
+/// @return true if the value and the ratio are equal
 template <typename T, typename U>
 inline constexpr bool operator==(const U &value, const Ratio<T> &r) { return convertToRatio<U, T>(value, nbIter) == r;}
 
+/// @brief comparision of a value and a ratio
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to compare
+/// @param r : the compared ratio
+/// @return true if the value and the ratio are not equal
 template <typename T, typename U>
 inline constexpr bool operator!=(const U &value, const Ratio<T> &r) { return convertToRatio<U, T>(value, nbIter) != r;}
 
+/// @brief comparision of a value and a ratio
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to compare
+/// @param r : the compared ratio
+/// @return true if the value is greater than the ratio
 template <typename T, typename U>
 inline constexpr bool operator>(const U &value, const Ratio<T> &r) { return convertToRatio<U, T>(value, nbIter) > r;}
 
+/// @brief comparision of a value and a ratio
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to compare
+/// @param r : the compared ratio
+/// @return true if the value is less than the ratio
 template <typename T, typename U>
 inline constexpr bool operator<(const U &value, const Ratio<T> &r) { return convertToRatio<U, T>(value, nbIter) < r;}
 
+/// @brief comparision of a value and a ratio
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to compare
+/// @param r : the compared ratio
+/// @return true if the value is greater than or equal to the ratio
 template <typename T, typename U>
 inline constexpr bool operator>=(const U &value, const Ratio<T> &r) { return convertToRatio<U, T>(value, nbIter) >= r;}
 
+/// @brief comparision of a value and a ratio
+/// @tparam T : the type of the ratio
+/// @tparam U : the type of the value
+/// @param value : the value to compare
+/// @param r : the compared ratio
+/// @return true if the value is less than or equal to the ratio
 template <typename T, typename U>
 inline constexpr bool operator<=(const U &value, const Ratio<T> &r) { return convertToRatio<U, T>(value, nbIter) <= r;}
 
+//////////////////////////////// VARIADICS FUNCTIONS
 
+/// @brief stopping condition of variadics function to multiply several ratio
+/// @tparam T : the type of the ratio
+/// @param first : the first ratio in the list
+/// @return the result of the multiplication
 template <typename T>
 constexpr Ratio<T> product(Ratio<T> first) {
     return first;
 }
+/// @brief variadics function to multiply several ratio
+/// @tparam T : the type of the ratio
+/// @tparam ...Args : the other arguments
+/// @param ratio : the ratio to multiply to the others
+/// @param ...args : the second part of the list
+/// @return the result of the multiplication
 template <typename T, typename ... Args>
 constexpr Ratio<T> product(const Ratio<T> &ratio, const Args ... args) {
     return ratio * product(args...);
 }
 
-
+/// @brief stopping condition of variadics function to add several ratio
+/// @tparam T : the type of the ratio
+/// @param first : the first ratio in the list
+/// @return the result of the addition
 template <typename T>
 constexpr Ratio<T> addition(Ratio<T> first) {
     return first;
 }
+/// @brief variadics function to add several ratio
+/// @tparam T : the type of the ratio
+/// @tparam ...Args : the other arguments
+/// @param ratio : the ratio to add to the others
+/// @param ...args : the second part of the list
+/// @return the result of the addition
 template <typename T, typename ... Args>
 constexpr Ratio<T> addition(const Ratio<T> &ratio, const Args ... args) {
     return ratio + addition(args...);
 }
 
-
+/// @brief stopping condition of variadics function to subtract several ratio
+/// @tparam T : the type of the ratio
+/// @param first : the first ratio in the list
+/// @return the result of the subtraction
 template <typename T>
 constexpr Ratio<T> subtraction(Ratio<T> first) {
     return - first;
 }
+/// @brief variadics function to subtract several ratio
+/// @tparam T : the type of the ratio
+/// @tparam ...Args : the other arguments
+/// @param ratio : the ratio to subtract to the others
+/// @param ...args : the second part of the list
+/// @return the result of the subtraction
 template <typename T, typename ... Args>
 constexpr Ratio<T> subtraction(const Ratio<T> &ratio, const Args ... args) {
     return ratio - subtraction(args...);
 }
 
-
+/// @brief stopping condition of variadics function to get the minimum of several ratio
+/// @tparam T : the type of the ratio
+/// @param first : the first ratio in the list
+/// @param last : the second ratio to compare to the first
+/// @return the minimum of the ratio
 template <typename T>
 constexpr Ratio<T> min(Ratio<T> first, Ratio<T> last) {
     if (first < last) {
@@ -477,6 +595,12 @@ constexpr Ratio<T> min(Ratio<T> first, Ratio<T> last) {
     }
     return last;
 }
+/// @brief variadics function to get the minimum of several ratio
+/// @tparam T : the type of the ratio
+/// @tparam ...Args : the other arguments
+/// @param ratio : the ratio to compare to the others
+/// @param ...args : the second part of the list
+/// @return the minimum of the ratio
 template <typename T, typename ... Args>
 constexpr Ratio<T> min(const Ratio<T> &ratio, const Args ... args) {
     if (ratio < min(args...)) {
@@ -484,7 +608,6 @@ constexpr Ratio<T> min(const Ratio<T> &ratio, const Args ... args) {
     }
     return min(args...);
 }
-
 
 /// @brief stopping condition of variadics function to get the maximum of several ratio
 /// @tparam T : the type of the ratio
