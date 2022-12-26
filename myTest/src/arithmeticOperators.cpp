@@ -3,10 +3,7 @@
 
 #include "Ratio.hpp"
 
-
-
-
-
+/////////////////// PLUS
 
 TEST (RatioArithmetic, plusRatio) {
     Ratio ratio1(5, 3);
@@ -31,6 +28,8 @@ TEST (RatioArithmetic, valuePlus) {
     ASSERT_EQ (result.getNumerator(), 41);
     ASSERT_EQ (result.getDenominator(), 12);
 }
+
+/////////////////// MINUS
 
 TEST (RatioArithmetic, minusRatio) {
     Ratio ratio1(5, 3);
@@ -69,6 +68,8 @@ TEST (RatioArithmetic, unaryMinus) {
     ASSERT_EQ (result.getDenominator(), 3);
 }
 
+/////////////////// DIVIDE
+
 TEST (RatioArithmetic, divide) {
     Ratio ratio1(6, 3); 
     Ratio ratio2(8, 5);
@@ -92,6 +93,8 @@ TEST (RatioArithmetic, valueDivide) {
     ASSERT_EQ (result.getNumerator(), 1);
     ASSERT_EQ (result.getDenominator(), 1);
 }
+
+/////////////////// MULTIPLY
 
 TEST (RatioArithmetic, multiply) {
     Ratio ratio1(6, 3); 
@@ -117,6 +120,8 @@ TEST (RatioArithmetic, valueMultiply) {
     ASSERT_EQ (result.getDenominator(), 3);
 }
 
+/////////////////// MODULO
+
 TEST (RatioArithmetic, modulo) {
     Ratio ratio1(5, 2);
     Ratio ratio2(4, 3);
@@ -124,6 +129,8 @@ TEST (RatioArithmetic, modulo) {
     ASSERT_EQ (result.getNumerator(), 7);
     ASSERT_EQ (result.getDenominator(), 1);
 }
+
+/////////////////// INCREMENT & DECREMENT
 
 TEST (RatioArithmetic, increment) {
     Ratio ratio(2, 3);

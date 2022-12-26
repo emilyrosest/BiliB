@@ -148,6 +148,18 @@ int main()
     std::cout << "myRatio8 = " << myRatio8 << std::endl;
     std::cout << "myRatio9 = " << myRatio9 << std::endl << std::endl;
 
+    //////////////////// ASSIGNMENT OPERATORS
+
+    Ratio myRatio10 = myRatio1;
+    myRatio10 *= myRatio0;
+    myRatio10 += 20;
+    myRatio10 -= myRatio2;
+    myRatio10 /= 1.39;
+    myRatio10 %= myRatio2;
+
+    std::cout << "myRatio10 = " << myRatio10 << std::endl;
+    
+
 
 
 

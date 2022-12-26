@@ -192,60 +192,79 @@ class Ratio {
         /// @param r : the ratio to divide
         /// @return the rational remainder of the division of 2 ratio
         template <typename U = float>
-        inline constexpr Ratio operator%(const Ratio &r) const { return convertToRatio<U, T>((*this / r).remainder(), nbIter);}
+        inline constexpr Ratio<T> operator%(const Ratio<T> &r) const { return convertToRatio<U, T>((*this / r).remainder(), nbIter);}
 
         /// @brief increment the ratio by 1
-        inline constexpr void operator++() { *this += Ratio(static_cast<T>(1), static_cast<T>(1));};
+        inline constexpr void operator++() { *this += Ratio<T>(static_cast<T>(1), static_cast<T>(1));};
 
         /// @brief decrement the ratio by 1
-        inline constexpr void operator--() { *this -= Ratio(static_cast<T>(1), static_cast<T>(1));};
+        inline constexpr void operator--() { *this -= Ratio<T>(static_cast<T>(1), static_cast<T>(1));};
 
         //////////////////////////////// ASSIGNMENT OPERATORS
 
         /// @brief assign a ratio to another
         /// @param r : the ratio to assign
         /// @return the ratio assigned
-        constexpr Ratio operator=(const Ratio &r) {
+        constexpr Ratio<T> operator=(const Ratio<T> &r) {
             if (&r == this) return *this;
             m_n = r.m_n;
             m_d = r.m_d;
             return *this;
         }
 
+        /// @brief assign a ratio to another from a value
+        /// @tparam U : the type of the value
+        /// @param value : the value to assign
+        /// @return the ratio assigned
         template <typename U>
         inline constexpr Ratio<T> operator=(const U &value) { this = convertToRatio<U, T>(value, nbIter); return *this;}
 
         /// @brief add a ratio to the curent ratio
         /// @param r : the ratio to add
-        inline void operator+=(const Ratio &r) { *this = *this + r;}; //return un ratio?
+        inline void operator+=(const Ratio<T> &r) { *this = *this + r;}; //return un ratio?
 
+        /// @brief add a value to the current ratio
+        /// @tparam U : the type of the value
+        /// @param value : the value to add
         template <typename U>
         inline constexpr void operator+=(const T &value) { *this += convertToRatio<U, T>(value, nbIter);}
 
         /// @brief subtract a ratio to the curent ratio
         /// @param r : the ratio to subtract
-        inline constexpr void operator-=(const Ratio &r) { *this = *this - r;};
+        inline constexpr void operator-=(const Ratio<T> &r) { *this = *this - r;};
 
+        /// @brief subtract a value to the current ratio
+        /// @tparam U : the type of the value
+        /// @param value : the value to subtract
         template <typename U>
         inline constexpr void operator-=(const U &value) { *this -= convertToRatio<U, T>(value, nbIter);}
 
         /// @brief multiply a ratio to the curent ratio
         /// @param r : the ratio to multiply
-        inline constexpr void operator*=(const Ratio &r) { *this = *this * r;};
+        inline constexpr void operator*=(const Ratio<T> &r) { *this = *this * r;};
 
+        /// @brief multiply a value to the current ratio
+        /// @tparam U : the type of the value
+        /// @param value : the value to multiply
         template <typename U>
         inline constexpr void operator*=(const U &value) { *this *= convertToRatio<U, T>(value, nbIter);}
 
-        /// @brief divide a ratio to the curent ratio
+        /// @brief divide a ratio to the current ratio
         /// @param r : the ratio to divide
-        inline constexpr void operator/=(const Ratio &r) { *this = *this / r;};
+        inline constexpr void operator/=(const Ratio<T> &r) { *this = *this / r;};
 
+        /// @brief divide a value to the current ratio
+        /// @tparam U : the type of the value
+        /// @param value : the value to divide
         template <typename U>
         inline constexpr void operator/=(const U &value) { *this /= convertToRatio<U, T>(value, nbIter);}
 
         /// @brief assign the remainder of the current ratio and a ratio to the current ratio
         /// @param r : the ratio to divide to the current ratio to get the remainder
-        inline constexpr void operator%=(const Ratio &r) { *this = *this % r;};
+        inline constexpr void operator%=(const Ratio<T> &r) { *this = *this % r;};
+
+        template <typename U>
+        inline constexpr void operator%=(const U &value) { *this %= convertToRatio<U, T>(value, nbIter);}
 
 
         //////////////////////////////// RELATIONAL OPERATORS
@@ -338,27 +357,8 @@ constexpr Ratio<T> convertToRatio(const U &x, unsigned int nbIter) {
     U q = static_cast<T>(x);
     return Ratio<T>(q, ONE) + convertToRatio<U, T>(x - q, nbIter - 1);
 }
-// template<typename T, typename U = int>
-// constexpr Ratio<U> convertToRatio(const T &x, unsigned int nbIter) {
-//     constexpr T ZERO = static_cast<T>(0);
-//     constexpr T ONE = static_cast<T>(1);
 
-//     if (x < ZERO){ 
-//         return -convertToRatio<T>(-x, nbIter);
-//     }
-//     if (x < static_cast<T>(0.01)) {
-//         return Ratio<U>();
-//     }
-//     if (nbIter == 0){
-//         return Ratio<U>();
-//     }
-//     if (x < ONE) {
-//         return convertToRatio<T>(ONE / static_cast<T>(x), nbIter).inverse();
-//     }
-//     U q = static_cast<U>(x);
-//     return Ratio<U>(q, ONE) + convertToRatio<T>(x - q, nbIter - 1);
-// }
-
+//////////////////////////////// ARITHMETIC OPERATORS
 
 /// @brief add a ratio and a number
 /// @tparam U : the type of the number
@@ -384,7 +384,7 @@ inline constexpr Ratio<T> operator-(const U &value, const Ratio<T> &r) { return 
 /// @return the division of the current ratio by the argument number
 template <typename T, typename U>
 constexpr Ratio<T> operator/(const U &value, const Ratio<T> &r) { 
-    if (r == Ratio()) throw std::string("denominator should not be zero");
+    if (r == Ratio<T>()) throw std::string("denominator should not be zero");
     return convertToRatio<U, T>(value, nbIter) / r;
 } 
 
@@ -397,9 +397,29 @@ constexpr Ratio<T> operator/(const U &value, const Ratio<T> &r) {
 template <typename T, typename U>
 inline constexpr Ratio<T> operator*(const U &value, const Ratio<T> &r) { return r * value;}
 
+//////////////////////////////// ASSIGNMENT OPERATORS
+
 // template <typename T, typename U>
-// inline Ratio<T> operator=(const U &value, const Ratio<T> &r) { value = r.convertToNumber<U>(); return value;}
-//inline Ratio<T> operator=(const U &value) { this = convertToRatio<U>(value, nbIter); return *this;}
+// inline constexpr U operator=(U &value, const Ratio<T> &r) { value = r.convertToNumber(); return value;}
+
+
+template <typename T, typename U>
+inline constexpr void operator+=(U &value, const Ratio<T> &r) { value = value + r.convertToNumber();}
+
+template <typename T, typename U>
+inline constexpr void operator-=(U &value, const Ratio<T> &r) { value = value - r.convertToNumber();}
+
+template <typename T, typename U>
+inline constexpr void operator*=(U &value, const Ratio<T> &r) { value = value * r.convertToNumber();}
+
+template <typename T, typename U>
+inline constexpr void operator/=(U &value, const Ratio<T> &r) { value = value / r.convertToNumber();}
+
+template <typename T, typename U>
+inline constexpr void operator%=(U &value, const Ratio<T> &r) { value = value % static_cast<T>(r.convertToNumber());}
+
+
+
 
 template <typename T, typename U>
 inline constexpr bool operator==(const U &value, const Ratio<T> &r) { return convertToRatio<U, T>(value, nbIter) == r;}
