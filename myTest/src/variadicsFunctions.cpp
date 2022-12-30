@@ -4,7 +4,7 @@
 #include "Ratio.hpp"
 
 
-TEST (RatioVariadic, product) {
+TEST (VariadicFunctions, product) {
     Ratio ratio1(1, 2);
     Ratio ratio2(3, 2);
     Ratio ratio3(7, 3);
@@ -13,7 +13,7 @@ TEST (RatioVariadic, product) {
     ASSERT_EQ (result.getDenominator(), 4);
 }
 
-TEST (RatioVariadic, addition) {
+TEST (VariadicFunctions, addition) {
     Ratio ratio1(1, 2);
     Ratio ratio2(7, 6);
     Ratio ratio3(8, 3);
@@ -22,7 +22,7 @@ TEST (RatioVariadic, addition) {
     ASSERT_EQ (result.getDenominator(), 3);
 }
 
-TEST (RatioVariadic, subtraction) {
+TEST (VariadicFunctions, subtraction) {
     Ratio ratio1(10, 6);
     Ratio ratio2(7, 3);
     Ratio ratio3(9, 2);
@@ -31,7 +31,7 @@ TEST (RatioVariadic, subtraction) {
     ASSERT_EQ (result.getDenominator(), 6);
 }
 
-TEST (RatioVariadic, min) {
+TEST (VariadicFunctions, minimum) {
     Ratio ratio1(7, 4);
     Ratio ratio2(9.);
     Ratio ratio3(1, 3);
@@ -40,7 +40,7 @@ TEST (RatioVariadic, min) {
     ASSERT_EQ (min(ratio1, ratio2, ratio3, ratio4, ratio5), ratio5);
 }
 
-TEST (RatioVariadic, max) {
+TEST (VariadicFunctions, maximum) {
     Ratio ratio1(4, 4);
     Ratio ratio2(-487, -400);
     Ratio ratio3(7, -3);

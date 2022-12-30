@@ -6,19 +6,19 @@
 
 /////////////////// ==
 
-TEST (RatioOperators, EqualOperator) {
+TEST (relationalOperators, equal) {
     Ratio ratio1(8, 5);
     Ratio ratio2(16, 10);
     ASSERT_EQ (ratio1 == ratio2, true);
 }
 
-TEST (RatioOperators, equalValue) {
+TEST (relationalOperators, equalValue) {
     Ratio ratio(16, 5);
     double value = 3.2;
     ASSERT_EQ (ratio == value, true);
 }
 
-TEST (RatioOperators, valueEqual) {
+TEST (relationalOperators, valueEqual) {
     float value = 5.5;
     Ratio ratio(10, 1);
     ASSERT_EQ (value == ratio, false);
@@ -26,19 +26,19 @@ TEST (RatioOperators, valueEqual) {
 
 /////////////////// !=
 
-TEST (RatioOperators, notEqualOperator) {
+TEST (relationalOperators, notEqual) {
     Ratio ratio1(8, 5);
     Ratio ratio2(18, 10);
     ASSERT_EQ (ratio1 != ratio2, true);
 }
 
-TEST (RatioOperators, notEqualValue) {
+TEST (relationalOperators, notEqualValue) {
     Ratio ratio(8, 5);
     float value = 7.6;
     ASSERT_EQ (ratio != value, true);
 }
 
-TEST (RatioOperators, valueNotEqual) {
+TEST (relationalOperators, valueNotEqual) {
     float value = 1.6;
     Ratio ratio(8, 5);
     ASSERT_EQ (value != ratio, false);
@@ -46,20 +46,20 @@ TEST (RatioOperators, valueNotEqual) {
 
 /////////////////// >
 
-TEST (RatioOperators, greaterOperator) {
+TEST (relationalOperators, greater) {
     Ratio ratio1(7, 4);
     Ratio ratio2(2, 7);
     ASSERT_EQ (ratio1 > ratio2, true);
     ASSERT_EQ (ratio2 > ratio1, false);
 }
 
-TEST (RatioOperators, greaterValue) {
+TEST (relationalOperators, greaterValue) {
     Ratio ratio(9, 2);
     float value = 10.9;
     ASSERT_EQ (ratio > value, false);
 }
 
-TEST (RatioOperators, valueGreater) {
+TEST (relationalOperators, valueGreater) {
     float value = 2.;
     Ratio ratio(2, 7);
     ASSERT_EQ (value > ratio, true);
@@ -67,20 +67,20 @@ TEST (RatioOperators, valueGreater) {
 
 /////////////////// <
 
-TEST (RatioOperators, lessOperator) {
+TEST (relationalOperators, less) {
     Ratio ratio1(1, 3);
     Ratio ratio2(4, 5);
     ASSERT_EQ (ratio1 < ratio2, true);
     ASSERT_EQ (ratio2 < ratio1, false);
 }
 
-TEST (RatioOperators, lessValue) {
+TEST (relationalOperators, lessValue) {
     Ratio ratio(1, 4);
     float value = 0.25;
     ASSERT_EQ (ratio < value, false);
 }
 
-TEST (RatioOperators, valueLess) {
+TEST (relationalOperators, valueLess) {
     float value = 0.25;
     Ratio ratio(1, 3);
     ASSERT_EQ (value < ratio, true);
@@ -88,20 +88,20 @@ TEST (RatioOperators, valueLess) {
 
 /////////////////// >=
 
-TEST (RatioOperators, greaterOrEqual) {
+TEST (relationalOperators, greaterOrEqual) {
     Ratio ratio1(7, 4);
     Ratio ratio2(14, 8);
     ASSERT_EQ (ratio1 >= ratio2, true);
     ASSERT_EQ (ratio2 >= ratio1, true);
 }
 
-TEST (RatioOperators, greaterOrEqualValue) {
+TEST (relationalOperators, greaterOrEqualValue) {
     Ratio ratio(7, 9);
     float value = -8.9;
     ASSERT_EQ (ratio >= value, true);
 }
 
-TEST (RatioOperators, valueGreaterOrEqual) {
+TEST (relationalOperators, valueGreaterOrEqual) {
     float value = 2.5;
     Ratio ratio(5, 2);
     ASSERT_EQ (value >= ratio, true);
@@ -109,20 +109,20 @@ TEST (RatioOperators, valueGreaterOrEqual) {
 
 /////////////////// <=
 
-TEST (RatioOperators, lessOrEqual) {
+TEST (relationalOperators, lessOrEqual) {
     Ratio ratio1(1, 4);
     Ratio ratio2(4, 3);
     ASSERT_EQ (ratio1 <= ratio2, true);
     ASSERT_EQ (ratio2 <= ratio1, false);
 }
 
-TEST (RatioOperators, lessOrEqualValue) {
+TEST (relationalOperators, lessOrEqualValue) {
     Ratio ratio(18, 11);
     float value = 100.7;
     ASSERT_EQ (ratio <= value, true);
 }
 
-TEST (RatioOperators, valueLessOrEqual) {
+TEST (relationalOperators, valueLessOrEqual) {
     float value = 1.3;
     Ratio ratio(45, 44);
     ASSERT_EQ (value <= ratio, false);

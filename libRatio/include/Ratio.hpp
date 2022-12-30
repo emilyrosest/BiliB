@@ -48,7 +48,7 @@ class Ratio {
         constexpr Ratio() : m_n(0), m_d(1) {}
 
         /// \brief constructor from the two integers of the ratio
-        /// \param n : n is the numerator
+        /// \param n : n is the numerator (it always carries the sign)
         /// \param d : d is the denominator
         constexpr Ratio(const T &n, const T &d) {
             if (d == 0) throw std::domain_error("denominator should not be zero");

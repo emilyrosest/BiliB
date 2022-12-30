@@ -5,7 +5,7 @@
 
 /////////////////// PLUS
 
-TEST (RatioArithmetic, plusRatio) {
+TEST (ArithmeticOperators, plus) {
     Ratio ratio1(5, 3);
     Ratio ratio2(8, 6);
     Ratio result = ratio1 + ratio2;
@@ -13,7 +13,7 @@ TEST (RatioArithmetic, plusRatio) {
     ASSERT_EQ (result.getDenominator(), 1);
 }
 
-TEST (RatioArithmetic, plusValue) {
+TEST (ArithmeticOperators, plusValue) {
     Ratio ratio(5, 3);
     int value = 2;
     Ratio result = ratio + value;
@@ -21,7 +21,7 @@ TEST (RatioArithmetic, plusValue) {
     ASSERT_EQ (result.getDenominator(), 3);
 }
 
-TEST (RatioArithmetic, valuePlus) {
+TEST (ArithmeticOperators, valuePlus) {
     Ratio ratio(5, 3);
     double value = 1.75;
     Ratio result = value + ratio;
@@ -31,7 +31,7 @@ TEST (RatioArithmetic, valuePlus) {
 
 /////////////////// MINUS
 
-TEST (RatioArithmetic, minusRatio) {
+TEST (ArithmeticOperators, minus) {
     Ratio ratio1(5, 3);
     Ratio ratio2(8, 6);
     Ratio result = ratio1 - ratio2;
@@ -39,7 +39,7 @@ TEST (RatioArithmetic, minusRatio) {
     ASSERT_EQ (result.getDenominator(), 3);
 }
 
-TEST (RatioArithmetic, minusValue) {
+TEST (ArithmeticOperators, minusValue) {
     Ratio ratio(3, 5);
     float value = 3.2;
     Ratio result = ratio - value;
@@ -47,7 +47,7 @@ TEST (RatioArithmetic, minusValue) {
     ASSERT_EQ (result.getDenominator(), 5);
 }
 
-TEST (RatioArithmetic, valueMinus) {
+TEST (ArithmeticOperators, valueMinus) {
     Ratio ratio(3, 5);
     float value = 3.2;
     Ratio result = value - ratio;
@@ -61,7 +61,7 @@ TEST (RatioArithmetic, valueMinus) {
     ASSERT_EQ (result2.getDenominator(), 5);
 }
 
-TEST (RatioArithmetic, unaryMinus) {
+TEST (ArithmeticOperators, unaryMinus) {
     Ratio ratio1(5, 3);
     Ratio result = - ratio1;
     ASSERT_EQ (result.getNumerator(), -5);
@@ -70,7 +70,7 @@ TEST (RatioArithmetic, unaryMinus) {
 
 /////////////////// DIVIDE
 
-TEST (RatioArithmetic, divide) {
+TEST (ArithmeticOperators, divide) {
     Ratio ratio1(6, 3); 
     Ratio ratio2(8, 5);
     Ratio result = ratio1/ratio2;
@@ -78,7 +78,7 @@ TEST (RatioArithmetic, divide) {
     ASSERT_EQ (result.getDenominator(), 4);
 }
 
-TEST (RatioArithmetic, divideValue) {
+TEST (ArithmeticOperators, divideValue) {
     Ratio ratio(6, 3); 
     double value = 1.6;
     Ratio result = ratio/value;
@@ -86,7 +86,7 @@ TEST (RatioArithmetic, divideValue) {
     ASSERT_EQ (result.getDenominator(), 4);
 }
 
-TEST (RatioArithmetic, valueDivide) {
+TEST (ArithmeticOperators, valueDivide) {
     float value = 2.;
     Ratio ratio(6, 3); 
     Ratio result = value / ratio;
@@ -96,7 +96,7 @@ TEST (RatioArithmetic, valueDivide) {
 
 /////////////////// MULTIPLY
 
-TEST (RatioArithmetic, multiply) {
+TEST (ArithmeticOperators, multiply) {
     Ratio ratio1(6, 3); 
     Ratio ratio2(8, 5);
     Ratio result = ratio1*ratio2;
@@ -104,7 +104,7 @@ TEST (RatioArithmetic, multiply) {
     ASSERT_EQ (result.getDenominator(), 5);
 }
 
-TEST (RatioArithmetic, multiplyValue) {
+TEST (ArithmeticOperators, multiplyValue) {
     Ratio ratio(8, 5);
     int value = 3;
     Ratio result = ratio * value;
@@ -112,7 +112,7 @@ TEST (RatioArithmetic, multiplyValue) {
     ASSERT_EQ (result.getDenominator(), 5);
 }
 
-TEST (RatioArithmetic, valueMultiply) {
+TEST (ArithmeticOperators, valueMultiply) {
     int value = 5;
     Ratio ratio(4, 3);
     Ratio result = value * ratio;
@@ -122,7 +122,7 @@ TEST (RatioArithmetic, valueMultiply) {
 
 /////////////////// MODULO
 
-TEST (RatioArithmetic, modulo) {
+TEST (ArithmeticOperators, modulo) {
     Ratio ratio1(5, 2);
     Ratio ratio2(4, 3);
     Ratio result = ratio1 % ratio2;
@@ -132,14 +132,14 @@ TEST (RatioArithmetic, modulo) {
 
 /////////////////// INCREMENT & DECREMENT
 
-TEST (RatioArithmetic, increment) {
+TEST (ArithmeticOperators, increment) {
     Ratio ratio(2, 3);
     ++ratio;
     ASSERT_EQ (ratio.getNumerator(), 5);
     ASSERT_EQ (ratio.getDenominator(), 3);
 }
 
-TEST (RatioArithmetic, decrement) {
+TEST (ArithmeticOperators, decrement) {
     Ratio ratio(2, 3);
     --ratio;
     ASSERT_EQ (ratio.getNumerator(), -1);

@@ -5,21 +5,21 @@
 
 /////////////////// =
 
-TEST (RatioOperators, equalAssignment) {
+TEST (AssignmentOperators, equal) {
     Ratio ratio1(7, 4);
     Ratio ratio2 = ratio1;
     ASSERT_EQ (ratio1.getNumerator(), ratio2.getNumerator());
     ASSERT_EQ (ratio1.getDenominator(), ratio2.getDenominator());
 }
 
-TEST (RatioOperators, equalAssignementValue) {
+TEST (AssignmentOperators, equalValue) {
     float value = 12.8;
     Ratio ratio = value;
     ASSERT_EQ (ratio.getNumerator(), 64);
     ASSERT_EQ (ratio.getDenominator(), 5);
 }
 
-// TEST (RatioOperators, valueEqualAssignment) {
+// TEST (AssignmentOperators, valueEqual) {
 //     int value = 76;
 //     Ratio ratio(86, 20);
 //     value = ratio;
@@ -28,7 +28,7 @@ TEST (RatioOperators, equalAssignementValue) {
 
 /////////////////// +=
 
-TEST (RatioOperators, plusAssignment) {
+TEST (AssignmentOperators, plus) {
     Ratio ratio1(4, 3);
     Ratio ratio2(10, 6);
     ratio1 += ratio2;
@@ -36,7 +36,7 @@ TEST (RatioOperators, plusAssignment) {
     ASSERT_EQ (ratio1.getDenominator(), 1);
 }
 
-TEST (RatioOperators, plusAssignmentValue) {
+TEST (AssignmentOperators, plusValue) {
     Ratio ratio(10, 6);
     float value = 7.5;
     ratio += value;
@@ -44,7 +44,7 @@ TEST (RatioOperators, plusAssignmentValue) {
     ASSERT_EQ (ratio.getDenominator(), 6);
 }
 
-TEST (RatioOperators, valuePlusAssignment) {
+TEST (AssignmentOperators, valuePlus) {
     int value = 17;
     Ratio ratio(23, 2);
     value += ratio;
@@ -53,7 +53,7 @@ TEST (RatioOperators, valuePlusAssignment) {
 
 /////////////////// -=
 
-TEST (RatioOperators, minusAssignment) {
+TEST (AssignmentOperators, minus) {
     Ratio ratio1(4, 3);
     Ratio ratio2(10, 6);
     ratio1 -= ratio2;
@@ -61,7 +61,7 @@ TEST (RatioOperators, minusAssignment) {
     ASSERT_EQ (ratio1.getDenominator(), 3);
 }
 
-TEST (RatioOperators, minusAssignmentValue) {
+TEST (AssignmentOperators, minusValue) {
     Ratio ratio(4.);
     float value = 5.25;
     ratio -= value;
@@ -69,7 +69,7 @@ TEST (RatioOperators, minusAssignmentValue) {
     ASSERT_EQ (ratio.getDenominator(), 4);
 }
 
-TEST (RatioOperators, valueMinusAssignment) {
+TEST (AssignmentOperators, valueMinus) {
     float value = 14.2;
     Ratio ratio(23, 2);
     value -= ratio;
@@ -78,7 +78,7 @@ TEST (RatioOperators, valueMinusAssignment) {
 
 /////////////////// *=
 
-TEST (RatioOperators, multiplyAssignment) {
+TEST (AssignmentOperators, multiply) {
     Ratio ratio1(2, 3);
     Ratio ratio2(10, 6);
     ratio1 *= ratio2;
@@ -86,7 +86,7 @@ TEST (RatioOperators, multiplyAssignment) {
     ASSERT_EQ (ratio1.getDenominator(), 9);
 }
 
-TEST (RatioOperators, multiplyAssignmentValue) {
+TEST (AssignmentOperators, multiplyValue) {
     Ratio ratio(2, 4);
     float value = 11.6;
     ratio *= value;
@@ -94,7 +94,7 @@ TEST (RatioOperators, multiplyAssignmentValue) {
     ASSERT_EQ (ratio.getDenominator(), 5);
 }
 
-TEST (RatioOperators, valueMultiplyAssignment) {
+TEST (AssignmentOperators, valueMultiply) {
     int value = 5;
     Ratio ratio(30, 10);
     value *= ratio;
@@ -103,7 +103,7 @@ TEST (RatioOperators, valueMultiplyAssignment) {
 
 /////////////////// /=
 
-TEST (RatioOperators, divideAssignment) {
+TEST (AssignmentOperators, divide) {
     Ratio ratio1(2, 3);
     Ratio ratio2(4, 5);
     ratio1 /= ratio2;
@@ -111,7 +111,7 @@ TEST (RatioOperators, divideAssignment) {
     ASSERT_EQ (ratio1.getDenominator(), 6);
 }
 
-TEST (RatioOperators, divideAssignmentValue) {
+TEST (AssignmentOperators, divideValue) {
     Ratio ratio(7, 11);
     float value = 5.;
     ratio /= value;
@@ -119,7 +119,7 @@ TEST (RatioOperators, divideAssignmentValue) {
     ASSERT_EQ (ratio.getDenominator(), 55);
 }
 
-TEST (RatioOperators, valueDivideAssignment) {
+TEST (AssignmentOperators, valueDivide) {
     float value = 2.5;
     Ratio ratio(5, 7);
     value /= ratio;
@@ -128,7 +128,7 @@ TEST (RatioOperators, valueDivideAssignment) {
 
 /////////////////// %=
 
-TEST (RatioOperators, moduloAssignment) {
+TEST (AssignmentOperators, modulo) {
     Ratio ratio1(5, 7);
     Ratio ratio2(6, 4);
     ratio1 %= ratio2;
@@ -136,7 +136,7 @@ TEST (RatioOperators, moduloAssignment) {
     ASSERT_EQ (ratio1.getDenominator(), 1);
 }
 
-TEST (RatioOperators, moduloAssignmentValue) {
+TEST (AssignmentOperators, moduloValue) {
     Ratio ratio(2, 10);
     float value = 9.;
     ratio %= value;
@@ -144,7 +144,7 @@ TEST (RatioOperators, moduloAssignmentValue) {
     ASSERT_EQ (ratio.getDenominator(), 1);
 }
 
-TEST (RatioOperators, valueModuloAssignment) {
+TEST (AssignmentOperators, valueModulo) {
     int value = 10;
     Ratio ratio(14, 2);
     value %= ratio;
