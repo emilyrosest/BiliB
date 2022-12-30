@@ -19,13 +19,6 @@ TEST (AssignmentOperators, equalValue) {
     ASSERT_EQ (ratio.getDenominator(), 5);
 }
 
-// TEST (AssignmentOperators, valueEqual) {
-//     int value = 76;
-//     Ratio ratio(86, 20);
-//     value = ratio;
-//     ASSERT_EQ (value, 80);
-// }
-
 /////////////////// +=
 
 TEST (AssignmentOperators, plus) {

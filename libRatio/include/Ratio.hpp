@@ -3,6 +3,7 @@
 #include <fstream>
 #include <numeric>
 #include <cassert>
+#include <math.h>
 
 
 static unsigned int nbIter = 10;
@@ -100,7 +101,7 @@ class Ratio {
 
 
         /// @brief transform the ratio into an irreducible fraction
-        constexpr void reduce(){ 
+        constexpr void reduce() { 
             int pgcd = std::gcd((int)m_n, (int)m_d); 
             assert(pgcd != 0 && "gcd should not be zero");
             m_n /= pgcd;
@@ -109,25 +110,25 @@ class Ratio {
 
         /// @brief inverse the ratio
         /// @return the inversed ratio
-        inline constexpr Ratio<T> inverse() { return Ratio<T>(m_d, m_n);};
+        inline constexpr Ratio<T> inverse() const { return Ratio<T>(m_d, m_n);};
 
         /// @brief devides the numerator by the denominator
         /// @return the remainder
-        inline constexpr T remainder() { return m_n % m_d;};
+        inline constexpr T remainder() const { return m_n % m_d;};
 
         /// @brief the absolute value of a ratio
         /// @return the absolute value
-        inline constexpr Ratio<T> absolute() { return (m_n < static_cast<T>(0)) ? -*this : *this;};
+        inline constexpr Ratio<T> absolute() const { return (m_n < static_cast<T>(0)) ? -*this : *this;};
 
         /// @brief the integer part of a ratio
         /// @return the integer part
-        inline constexpr T floor() { return static_cast<T>(m_n / m_d);};
+        inline constexpr T floor() const { return static_cast<T>(m_n / m_d);};
 
         /// @brief convert ratio to number
         /// @tparam U : the type of the number wanted
         /// @return the number
         template <typename U = float>
-        inline constexpr U convertToNumber() const{ return static_cast<U>(m_n) / static_cast<U>(m_d);}
+        inline constexpr U convertToNumber() const { return static_cast<U>(m_n) / static_cast<U>(m_d);}
 
 
         //////////////////////////////// ARITHMETIC OPERATORS
@@ -221,7 +222,7 @@ class Ratio {
 
         /// @brief add a ratio to the curent ratio
         /// @param r : the ratio to add
-        inline void operator+=(const Ratio<T> &r) { *this = *this + r;}; //return un ratio?
+        inline void operator+=(const Ratio<T> &r) { *this = *this + r;}; 
 
         /// @brief add a value to the current ratio
         /// @tparam U : the type of the value
@@ -343,6 +344,36 @@ class Ratio {
         template <typename U>
         inline constexpr bool operator<=(const U &value) const { return *this <= convertToRatio<U, T>(value, nbIter);}
 
+        //////////////////////////////// MATHS FUNCTIONS
+
+        /// @brief exponential of a ratio
+        /// @return the ratio number of the exponential of the given ratio
+        inline constexpr Ratio<T> exp() const { return convertToRatio<float, T>(std::exp(convertToNumber<float>()), nbIter);};
+
+        /// @brief power of a ratio
+        /// @param k : the power of the ratio
+        /// @return the ratio number of the power of the given ratio
+        inline constexpr Ratio<T> pow(const unsigned int &k) const { return convertToRatio<float, T>(std::pow(convertToNumber<float>(), k), nbIter);};
+
+        /// @brief log of a ratio
+        /// @return the ratio number of the logarithm of the given ratio
+        inline constexpr Ratio<T> log() const { return convertToRatio<float, T>(std::log(convertToNumber<float>()), nbIter);};
+
+        /// @brief square root of a ratio
+        /// @return the ratio number of the square root of the given ratio
+        inline constexpr Ratio<T> sqrt() const { return convertToRatio<float, T>(std::sqrt(convertToNumber<float>()), nbIter);};
+
+        /// @brief cosinus of a ratio
+        /// @return the ratio number of the cosinus of the given ratio
+        inline constexpr Ratio<T> cos() const { return convertToRatio<float, T>(std::cos(convertToNumber<float>()), nbIter);};
+        
+        /// @brief sinus of a ratio
+        /// @return the ratio number of the sinus of the given ratio
+        inline constexpr Ratio<T> sin() const { return convertToRatio<float, T>(std::sin(convertToNumber<float>()), nbIter);};
+        
+        /// @brief tangent of a ratio
+        /// @return the ratio number of the tangent of the given ratio
+        inline constexpr Ratio<T> tan() const { return convertToRatio<float, T>(std::tan(convertToNumber<float>()), nbIter);};
 };
 
 /// @brief overload the operator << for Ratio
@@ -351,7 +382,7 @@ class Ratio {
 /// @param ratio : the ratio to output
 /// @return the output stream containing the ratio
 template <typename T>
-constexpr std::ostream& operator<< (std::ostream& stream, Ratio<T> ratio) {
+constexpr std::ostream& operator<< (std::ostream& stream, const Ratio<T> ratio) {
     stream << ratio.getNumerator() << "/" << ratio.getDenominator();
     return stream;
 }
@@ -424,9 +455,6 @@ template <typename T, typename U>
 inline constexpr Ratio<T> operator*(const U &value, const Ratio<T> &r) { return r * value;}
 
 //////////////////////////////// ASSIGNMENT OPERATORS
-
-// template <typename T, typename U>
-// inline constexpr U operator=(U &value, const Ratio<T> &r) { value = r.convertToNumber(); return value;}
 
 /// @brief add a ratio to the value
 /// @tparam T : the type of the ratio
