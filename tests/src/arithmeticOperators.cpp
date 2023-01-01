@@ -48,9 +48,9 @@ TEST (ArithmeticOperators, minusValue) {
 }
 
 TEST (ArithmeticOperators, valueMinus) {
-    Ratio ratio(3, 5);
+    Ratio ratio1(3, 5);
     float value = 3.2;
-    Ratio result = value - ratio;
+    Ratio result = value - ratio1;
     ASSERT_EQ (result.getNumerator(), 13);
     ASSERT_EQ (result.getDenominator(), 5);
 
@@ -106,10 +106,10 @@ TEST (ArithmeticOperators, multiply) {
 
 TEST (ArithmeticOperators, multiplyValue) {
     Ratio ratio(8, 5);
-    int value = 3;
+    double value = 21.25;
     Ratio result = ratio * value;
-    ASSERT_EQ (result.getNumerator(), 24);
-    ASSERT_EQ (result.getDenominator(), 5);
+    ASSERT_EQ (result.getNumerator(), 34);
+    ASSERT_EQ (result.getDenominator(), 1);
 }
 
 TEST (ArithmeticOperators, valueMultiply) {

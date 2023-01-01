@@ -18,8 +18,8 @@ TEST (Functions, inverse) {
 }
 
 TEST (Functions, remainder) {
-    Ratio ratio(9, 4);
-    ASSERT_EQ (ratio.remainder(), 1);
+    Ratio ratio1(9, 4);
+    ASSERT_EQ (ratio1.remainder(), 1);
     Ratio ratio2(8, 4);
     ASSERT_EQ (ratio2.remainder(), 0);
 }
