@@ -83,19 +83,25 @@ int main()
     //////////////////// MIN & MAX
 
     std::cout << "min : " << min(myRatio0, myRatio1, myRatio2, myRatio3, myRatio4, myRatio5, myRatio6, myRatio7, myRatio8, myRatio9, myRatio10, myRatio11, myRatio12, myRatio13, myRatio14) << std::endl;
-    std::cout << "max : " << max(myRatio0, myRatio1, myRatio2, myRatio3, myRatio4, myRatio5, myRatio6, myRatio7, myRatio8, myRatio9, myRatio10, myRatio11, myRatio12, myRatio13, myRatio14) << std::endl;
+    std::cout << "max : " << max(myRatio0, myRatio1, myRatio2, myRatio3, myRatio4, myRatio5, myRatio6, myRatio7, myRatio8, myRatio9, myRatio10, myRatio11, myRatio12, myRatio13, myRatio14) << std::endl << std::endl;
 
     //////////////////// MATHS FUNCTIONS
     
-    std::cout << (-Ratio(1)).exp() << std::endl;
-    std::cout << (Ratio(10)).exp() << std::endl;
+    std::cout << "exp(0) = " << (-Ratio()).exp() << std::endl;
+    std::cout << "exp(-1) = " << (-Ratio(1)).exp() << std::endl;
+    std::cout << "exp(10) = " << Ratio(10).exp() << std::endl;
 
-    std::cout << Ratio(4, 2).pow(2) << std::endl;
-    std::cout << Ratio(25, 5).pow(3) << std::endl;
+    std::cout << "log(1) = " << Ratio(1).log() << std::endl;
+    std::cout << "log(10) = " << Ratio(10).log() << std::endl;
 
-    std::cout << Ratio(125, 5).sqrt() << std::endl;
-    std::cout << Ratio(M_PI).cos() << std::endl;
-    std::cout << Ratio(M_PI).sin() << std::endl;
-    std::cout << Ratio(M_PI).tan() << std::endl;
+    std::cout << "2² = " << Ratio(4, 2).pow(2) << std::endl;
+    std::cout << "5³ = " << Ratio(25, 5).pow(3) << std::endl;
+
+    std::cout << "sqrt(25) = " << Ratio(125, 5).sqrt() << std::endl;
+
+    std::cout << "cos(PI) = " << Ratio(M_PI).cos() << std::endl;
+    std::cout << "sin(PI) = " << Ratio(M_PI).sin() << std::endl;
+    std::cout << "tan(PI) = " << Ratio(M_PI).tan() << std::endl << std::endl;
+    
     return 0;
 }

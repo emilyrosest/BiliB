@@ -350,14 +350,14 @@ class Ratio {
         /// @return the ratio number of the exponential of the given ratio
         inline constexpr Ratio<T> exp() const { return convertToRatio<float, T>(std::exp(convertToNumber<float>()), nbIter);};
 
+        /// @brief log of a ratio
+        /// @return the ratio number of the logarithm of the given ratio
+        inline constexpr Ratio<T> log() const { return convertToRatio<float, T>(std::log(convertToNumber<float>()), nbIter);};
+
         /// @brief power of a ratio
         /// @param k : the power of the ratio
         /// @return the ratio number of the power of the given ratio
         inline constexpr Ratio<T> pow(const unsigned int &k) const { return convertToRatio<float, T>(std::pow(convertToNumber<float>(), k), nbIter);};
-
-        /// @brief log of a ratio
-        /// @return the ratio number of the logarithm of the given ratio
-        inline constexpr Ratio<T> log() const { return convertToRatio<float, T>(std::log(convertToNumber<float>()), nbIter);};
 
         /// @brief square root of a ratio
         /// @return the ratio number of the square root of the given ratio
