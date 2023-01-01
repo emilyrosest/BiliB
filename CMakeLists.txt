@@ -7,14 +7,14 @@ message(STATUS "libRatio cmake part ..." )
 add_subdirectory(libRatio INTERFACE)
 include_directories(${CMAKE_SOURCE_DIR}/libRatio/include)
 
-# add myExemples
-message(STATUS "myExemples cmake part ..." )
-add_subdirectory(myExemples)
+# add examples
+message(STATUS "examples cmake part ..." )
+add_subdirectory(examples)
 
 # add google test
 message(STATUS "google test cmake part ..." )
 add_subdirectory(googletest-main)
 
-# add myTest
-message(STATUS "myTest cmake part ..." )
-add_subdirectory(myTest)
+# add tests
+message(STATUS "tests cmake part ..." )
+add_subdirectory(tests)
