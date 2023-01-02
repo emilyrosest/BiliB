@@ -14,7 +14,7 @@ static unsigned int nbIter = 10;
 /// \mainpage
 /// \tableofcontents
 /// \section introduction_sec What for?
-/// BiliB is a super tool.
+/// BiliB is a library for rationals.
 /// \section install_bigsec How to install
 /// \subsection dependencies_sec Dependecies
 /// \li nothing
@@ -126,7 +126,7 @@ class Ratio {
         /// @brief convert ratio to number
         /// @tparam U : the type of the number wanted
         /// @return the number
-        template <typename U = float>
+        template <typename U = double>
         inline constexpr U convertToNumber() const { return static_cast<U>(m_n) / static_cast<U>(m_d);}
 
         //////////////////////////////// ARITHMETIC OPERATORS

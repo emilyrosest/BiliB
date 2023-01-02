@@ -46,5 +46,7 @@ TEST (VariadicFunctions, maximum) {
     Ratio ratio3(7, -3);
     Ratio ratio4(7.);
     Ratio ratio5(-8, 5);
-    ASSERT_EQ (max(ratio1, ratio2, ratio3, ratio4, ratio5), ratio4);
+    Ratio ratio6(7);
+    ASSERT_EQ (max(ratio1, ratio2, ratio3, ratio4, ratio5, ratio6), ratio4);
+    ASSERT_EQ (max(ratio1, ratio2, ratio3, ratio4, ratio5, ratio6), ratio6);
 }
